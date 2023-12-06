@@ -1,0 +1,90 @@
+/* Footer.css */
+
+.footer {
+  width: 100%;
+  color: #333;
+  text-align: center;
+  /* height: 50vh; */
+  background-image:url(/public/images/BG_Footer.jpg) ;
+  background-size: cover;
+}
+
+.main-container-ft{
+  display: flex;
+  padding: 4%;
+  flex-direction: row;
+  align-content: space-between;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;  
+}
+
+
+.company-info {
+  text-align: left;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.company-logo {
+  width: 100%; 
+  height: auto; 
+  min-width: 250px;
+}
+
+.company-info h3 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.company-info p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.company-logo {
+  width: 160px; /* Adjust as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 20px;
+}
+
+.company-info{
+text-align: left;
+flex-wrap: wrap;
+}
+
+.social-links {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;  
+  gap: 10px; 
+}
+
+.social-icon {
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; 
+}
+
+.social-icon:hover {
+  transform: scale(1.2); 
+  opacity: 0.8;
+}
+.location-image {
+  padding: 2%;
+  height: auto;
+  /* display: block; */
+  margin: 0 auto; /* Center the image horizontally */
+}
+
+@media screen and (max-width: 768px) {
+ .main-container-ft{
+  flex-wrap: wrap;
+  flex-direction: column;
+ }
+ .location-image{
+  padding: 0%
+ }
+}

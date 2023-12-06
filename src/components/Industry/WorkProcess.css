@@ -1,0 +1,190 @@
+/* WorkProcess.css */
+
+
+.work-process{
+    background-image: url(/public/images/BG_1.jpg);
+    align-items: center;
+    padding:5%;
+}
+.container-wp {
+    width: 100%;
+    padding: 3%;
+    border-radius: 20px;
+    max-width: 1240px;
+    margin: auto;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    /* background-image: url(/public/images/WorkProcessBG.jpg); */
+    background: transparent;
+    backdrop-filter: blur(4px);
+    background-size: cover;
+  }
+  
+  .title {
+    margin: auto;
+    font-size: 2rem;
+    /* margin-bottom: 30px; */
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.7);
+    color: #333;
+    text-align: center;
+    background-color: #e4e0e0;
+    border-radius: 30px;
+    width: 22%;
+  }
+  .highlighted{
+    color: red;
+    text-decoration:solid;
+  }
+  
+  @keyframes scaleUp {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+
+  .steps {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 3%;
+    
+  }
+
+  .icon {
+    font-size: 5rem;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease-in-out;
+    visibility: hidden;
+  }
+
+  .step {
+    flex: 1;
+    padding:50px 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    color: #ffffff; 
+    text-align: center;
+  }
+  .step-indicator {
+    position: absolute;
+    top: 91%;
+    right: 91%;
+    background: linear-gradient(135deg, #7f1eff, #66d4ff);
+    color: #ffffff;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+  }
+  .step-indicator:hover {
+    transform: scale(1.1);
+  }
+  
+  .step:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+    background-color: #555;
+    background-image: none;
+    
+  }
+  .step:hover .icon {
+    transform: scale(1.2); 
+    visibility: visible;
+  }
+
+  
+  .step h2 {
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #ffffff;
+    visibility: hidden;
+  }
+  
+  .step p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #f0f0f0; 
+    visibility: hidden;
+  }
+
+  .step:hover h2,
+.step:hover p{
+  visibility: visible;
+  transition-delay: 0s; /* Show immediately on hover */
+}
+  
+  .step-1 {
+    background-image: url(/public//images/Problem\ Formulation\ \(1\).png);
+    background-position:center;
+    background-size: cover;
+  }
+  
+  .step-2 {
+    background-image: url(/public//images/ApplyingAlgorithm.png);
+    background-position:center;
+    background-size: cover;
+  }
+  
+  .step-3 {
+    background-image: url(/public//images/ProductImplementation\ \(2\).png);
+    background-position:center;
+    background-size: cover;
+  }
+  
+
+  @media (max-width: 768px) {
+    .title {
+      width: 80%; 
+      font-size: 1.8rem;
+    }
+  
+    .icon {
+      font-size: 3rem; 
+    }
+    
+    .steps{
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+  
+    .step {
+      height: auto; 
+      padding: 20px; 
+      margin-bottom: 20px;
+    }
+    .container-wp {
+      width: 47%;
+      padding: 3%;
+      border-radius: 20px;
+      margin: auto;
+    }
+  }

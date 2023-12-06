@@ -1,0 +1,13 @@
+/* CustomNavbar.css */
+
+/* Styling the Navbar */
+.custom-navbar {
+  background-color: #333; /* Change background color */
+  padding: 10px 0; /* Adjust padding */
+}
+
+/* Styling the Navbar Brand */
+.navbar-brand img {
+  width: 180px; /* Adjust logo image size */
+}
+
