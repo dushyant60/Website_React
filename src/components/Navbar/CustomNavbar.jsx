@@ -6,7 +6,7 @@ import './CustomNavbar.css';
 const CustomNavbar = () => {
   return (
     <Navbar expand="lg" className="custom-navbar" variant="dark" fixed="top">
-      <Container fluid >
+      <Container fluid>
         <Navbar.Brand href="/" className="ms-auto">
           <Image src="./images/logo1.png" alt="Logo" className="logo-image" />
         </Navbar.Brand>
@@ -18,24 +18,33 @@ const CustomNavbar = () => {
             <Nav.Link href="/productandsolutions" className="nav-link">
               Product & Solutions
             </Nav.Link>
-            <Nav.Link href="/industry" className="nav-link">Industry</Nav.Link>
+            <NavDropdown title="Industry" className="custom-dropdown">
+              <NavDropdown.Item href="/bfsi" className="dropdown-item">
+                BFSI
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/energy" className="dropdown-item">
+                Energy
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/manufacturing" className="dropdown-item">
+                Manufacturing
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/retail" className="dropdown-item">
+                Retail
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/healthcare" className="dropdown-item">
+                Health Care
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/automation" className="dropdown-item">
+                Automation
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/telecommunications" className="dropdown-item">
+                Telecommunications
+              </NavDropdown.Item>
+            </NavDropdown>
             <Nav.Link href="/technology" className="nav-link">Technology</Nav.Link>
             <Nav.Link href="/resources" className="nav-link">Resources</Nav.Link>
             <Nav.Link href="/about" className="nav-link">About</Nav.Link>
             <Nav.Link href="/career" className="nav-link">Career</Nav.Link>
-
-            <NavDropdown title="Dropdown" className="custom-dropdown">
-              <NavDropdown.Item href="/action1" className="dropdown-item">
-                Action 1
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/action2" className="dropdown-item">
-                Action 2
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/action3" className="dropdown-item">
-                Action 3
-              </NavDropdown.Item>
-            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Container>

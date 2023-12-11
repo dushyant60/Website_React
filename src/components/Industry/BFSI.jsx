@@ -1,13 +1,11 @@
 import React from 'react';
 import Footer from '../Footer/Footer';
 import TextShpere from '../TechStack/TextShpere';
-import WorkProcess from './WorkProcess';
+import WorkProcess from './WorkProcess/WorkProcess';
 
-const Industry = () => {
+const BFSI = () => {
   return (
     <div>
-      <div>Industry</div>
-      
       {/* Work Process Section */}
       <WorkProcess />
       
@@ -22,4 +20,4 @@ const Industry = () => {
   );
 };
 
-export default Industry;
+export default BFSI;

@@ -1,6 +1,6 @@
 import React from 'react';
-import '../Industry/WorkProcess.css';
-import { FaBrain, FaCog, FaRocket } from 'react-icons/fa'; // Import desired icons
+import "./WorkProcess.css";
+import { FaBrain, FaCog, FaRocket } from 'react-icons/fa';
 
 const WorkProcess = () => {
   return (
