@@ -11,3 +11,26 @@
   width: 180px; /* Adjust logo image size */
 }
 
+.nav-link {
+  color: #fff; /* Set the color of the links */
+  padding: 10px 15px; /* Adjust the padding */
+  transition: color 0.3s ease; /* Add a smooth color transition */
+}
+
+.nav-link:hover {
+  color: #ffcc00; /* Change the color on hover */
+}
+
+.custom-dropdown {
+  color: #fff; /* Set the color of the dropdown */
+}
+
+.dropdown-item {
+  color: #333; /* Set the color of dropdown items */
+  transition: background-color 0.3s ease; /* Add a smooth background color transition */
+}
+
+.dropdown-item:hover {
+  background-color: #eee; /* Change the background color on hover */
+  color: #fff; /* Change the text color on hover */
+}
