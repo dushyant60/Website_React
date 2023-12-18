@@ -160,7 +160,8 @@
   padding: 10px;
   border-radius: 30px;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(115deg, #56d8e4 10%, #3f01ea 90%);
+  /* background: linear-gradient(115deg, #56d8e4 10%, #3f01ea 90%); */
+  background-color: rgb(0, 0, 0, 0.3);
     }
   .container-tech{
     max-width: 800px;
@@ -168,7 +169,7 @@
     border-radius: 30px;
     width: 800px;
     padding: 25px 40px 10px 40px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.7);
   }
   .container-tech .text{
     text-align: center;

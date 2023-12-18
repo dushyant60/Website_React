@@ -1,0 +1,45 @@
+.bfsi-content{
+    margin-top: 4%;
+
+}
+/* Define styles for responsive image */
+.bfsiresponsive-image {
+    max-width: 100%; /* Set the maximum width to 100% of its container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Override default inline display for proper alignment */
+  }
+  
+  /* Adjust alignment of intro-section elements */
+  .bfsiintro-section {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center align items vertically */
+    background-image: url(/public/images/bfsi.jpg);
+    background-position: center;
+    background-size: cover;
+    flex-direction: row;
+  }
+  
+  /* Position intro-text on the left */
+  .bfsiintro-text {
+    padding: 180px 90px; /* Add padding for spacing */
+    text-align: center; /* Align text to the left */
+    background: linear-gradient(to right, #313131 80%, rgba(255, 255, 255, 0));
+    z-index: 2;
+    color: white;
+    font-size: 1.2rem;
+    width: 50%;
+  }
+  
+  /* Position intro-image on the right */
+  .bfsiintro-image {
+    flex: 1; /* Take remaining space */
+    text-align: right; /* Align image to the right */
+  }
+  
+  /* Add media query for responsiveness */
+  @media screen and (max-width: 768px) {
+    /* Modify styles for smaller screens */
+    .bfsiintro-section {
+      padding: 0 15px; /* Add padding to the intro-section */
+    }
+  }
