@@ -1,6 +1,9 @@
 .bfsi-content{
-    margin-top: 4%;
-
+    margin-top: 3%;
+    row-gap: 20px;
+    background-image: url(E:\git_realm\Website_React\public\images\BG_3.jpg);
+    /* background-position:b; */
+    /* background-size: cover; */
 }
 /* Define styles for responsive image */
 .bfsiresponsive-image {
@@ -22,11 +25,11 @@
   /* Position intro-text on the left */
   .bfsiintro-text {
     padding: 180px 90px; /* Add padding for spacing */
-    text-align: center; /* Align text to the left */
-    background: linear-gradient(to right, #313131 80%, rgba(255, 255, 255, 0));
+    text-align: left; /* Align text to the left */
+    background: rgba(255, 255, 255, 0.4);
     z-index: 2;
-    color: white;
-    font-size: 1.2rem;
+    color: rgb(7, 7, 7);
+    font-size: 1.4rem;
     width: 50%;
   }
   
@@ -34,6 +37,164 @@
   .bfsiintro-image {
     flex: 1; /* Take remaining space */
     text-align: right; /* Align image to the right */
+  }
+
+  .bfsiparagraph-section.modern-heading {
+    text-align: center; /* Center align text */
+    padding: 50px 5%; /* Adjust padding for spacing */
+    height: 100%;
+  
+    /* Unique styling for the paragraph */
+    p {
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      line-height: 1.8;
+      font-weight: 500;
+      color: #000000; /* Change text color */
+      /* max-width: 800px; Limit text width for better readability */
+      /* margin: 0 auto; Center align text */
+      position: relative;
+      text-align: justify;
+    }
+
+    img {
+      max-width: 100%; /* Ensure the image stays within its container */
+      height: auto; /* Maintain aspect ratio */
+      /* Additional styling for the image */
+    }
+  
+  }
+
+  .section-content{
+    flex-direction: row;
+    display: flex;
+  }
+
+  .section-image {
+    flex: 0 0 auto; /* To ensure the image doesn't grow */
+    margin-right: 20px; 
+    width: 30%;/* Adjust margin as needed */
+    /* Additional styling for the image container */
+  }
+
+  .section-text {
+    flex: 1;
+    padding: 7%; /* To allow text to take available space */
+    /* Additional styling for the text container */
+  }
+
+  .bfsiImage{
+    border-radius: 50px;
+  }
+
+  .bfsi-grid-section {
+    padding-bottom: 3%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .bfsi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns */
+    gap: 4%; /* Adjust gap between grid items */
+    /* max-width: 900px; Set a maximum width for the grid */
+    width: 90%; /* Ensure full width */
+    margin: 0 auto; /* Center align the grid */
+  }
+  
+  .bfsi-grid-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+  }
+  
+  .bfsi-grid-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 8px;
+  }
+  
+  /* Overlay styles */
+  .bfsi-grid-item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+  }
+  .read-more-btn{
+    background-color: #3498db; /* Change to your preferred background color */
+    color: #ffffff; /* Change to your preferred text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 6% !important;
+    /* Add more styles as needed */
+  }
+  .read-more-btn:hover {
+    background-color: #1174b7; /* Change to your preferred hover background color */
+    /* Add more styles for hover effect as needed */
+  }
+
+  .bfsi-grid-item-overlay button .svg-inline--fa {
+    margin-left: 5px; /* Adjust icon position */
+  }
+  
+/* styles.css */
+
+/* Banking Section */
+.banking-section {
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.gif-container{
+ width: 100%;
+
+}
+
+.gif-banking{
+  width: 60%;  
+  height: 40%;
+}
+
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+  /* Show overlay on hover */
+  .bfsi-grid-item:hover .bfsi-grid-item-overlay {
+    opacity: 1;
+  }
+  
+  /* Additional styles for overlay content */
+  .bfsi-grid-item-overlay h3,
+  .bfsi-grid-item-overlay p,
+  .bfsi-grid-item-overlay button {
+    margin: 5px;
   }
   
   /* Add media query for responsiveness */

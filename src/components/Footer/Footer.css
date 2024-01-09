@@ -5,8 +5,7 @@
   color: #333;
   text-align: center;
   /* height: 50vh; */
-  background-image:url(/public/images/BG_Footer.jpg) ;
-  background-size: cover;
+ 
 }
 
 .main-container-ft{
@@ -14,6 +13,8 @@
   padding: 4%;
   flex-direction: row;
   align-content: space-between;
+  background-image:url(/public/images/BG_Footer.jpg) ;
+  background-size: cover;
 }
 
 .details {
