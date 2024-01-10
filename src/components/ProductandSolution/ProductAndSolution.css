@@ -17,7 +17,7 @@
   }
   .section-heading {
     text-align: center;
-    /* margin-top: 20px; */
+    margin-top: 35px;
     font-size: 2.5rem;
     padding-top: 4%;
     color: #555;
@@ -29,11 +29,11 @@
     height: auto;
     border-radius: 25px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
-  
   }
   
   .product-slide {
     display: flex;
+    height: 100%;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
@@ -101,6 +101,70 @@
 
 .productsImg{
   padding:0;
+}
+
+@media screen and (max-width: 768px){
+  .product-carousel {
+    max-width: 100%;
+    margin: 2%;
+    height: auto;
+    border-radius: 25px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
+  }
+  
+  .slick-arrow{
+    display: none !important;
+  }
+  .section-heading {
+    margin-top: 60px;
+    font-size: 1.8rem;
+  }
+
+  .product-slide {
+    /* flex-wrap: wrap; */
+    padding: 6%;
+    height: 100%;
+  }
+  .product-info {
+    flex:1;
+    width: 100% !important;
+    padding-left: 25% !important;
+  }
+  
+  .product-info h3 {
+    font-size: 2rem;
+    margin-bottom: -10px;
+    margin-left: -20%;
+    color: rgb(4, 106, 185);
+    text-align: left;
+  }
+  .product-info h3::after{
+    content: '';
+    display: block;
+    width: 30px;
+    height: 5px;
+    border-radius: 20px;
+    background-color: rgb(3, 127, 136);
+    margin-top: 10px;
+  }
+  
+  .product-info p {
+    font-size: 12px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 20px;
+    line-height: 1.7;
+    font-weight: 500;
+    text-align: left;
+  }
+
+.product-image {
+ display: none;
+}
+.product-button{
+  font-size: 12px !important;
+  margin: 0 auto;
+  margin-left: 0%;
+}
 }
 
 
@@ -186,7 +250,7 @@
 }
 .custom-card {
   /* width: 300px; */
-  height: 500px;
+  height: 100%;
   border-radius: 25px !important;
   background: #f5f5f5 !important;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5) !important;
@@ -226,3 +290,18 @@
   font-size: 16px !important;
   color: #666 !important;
 } 
+
+@media screen and (max-width: 768px){
+  .solutions-container {
+    display: flex; 
+    padding: 2%;
+    width: 100%;
+  }
+  .custom-card{
+    padding: 3%;
+    border-radius: 10px !important;
+  }
+  .solutions{
+    display: flex;
+  }
+}

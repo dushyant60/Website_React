@@ -178,13 +178,15 @@
   
     .step {
       height: auto; 
+      /* padding: 20px;  */
+      /* margin-bottom: 20px; */
+    }
+    .step-3{
       padding: 20px; 
-      margin-bottom: 20px;
     }
     .container-wp {
-      width: 47%;
+      width: 100%;
       padding: 3%;
       border-radius: 20px;
-      margin: auto;
     }
   }

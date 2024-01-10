@@ -6,6 +6,10 @@
   padding: 10px 0; /* Adjust padding */
 }
 
+.ms-auto{
+  margin: 0% !important;
+}
+
 /* Styling the Navbar Brand */
 .navbar-brand img {
   width: 180px; /* Adjust logo image size */

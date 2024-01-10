@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import "./HomePage.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Footer from "../Footer/Footer";
 import TextShpere from "../TechStack/TextShpere";
+import "./HomePage.css";
 
 const HomePage = () => {
   const products = [
@@ -14,24 +14,23 @@ const HomePage = () => {
       id: 1,
       name: "GLAM",
       description: "Generative Language-based Analysis & Maximization",
-      image: "./images/GlamLogo.jpg",
+      image: "/images/GlamLogo.jpg",
     },
     {
       id: 2,
       name: "iSAM",
       description: "Intelligent Startup Administration & Management",
-      image: "./images/IsamLogo.png",
+      image: "/images/IsamLogo.png",
     },
     {
       id: 3,
       name: "EAS",
       description: "Enterprise Analytics Suite",
-      image: "./images/EASLogo.png",
+      image: "/images/EASLogo.png",
     },
     // Add more products as needed
   ];
 
-  // Slider settings for react-slick
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -62,7 +61,6 @@ const HomePage = () => {
 
   const footerRef = useRef(null);
 
-  // Function to handle scrolling to the footer
   const scrollToFooter = () => {
     if (footerRef && footerRef.current) {
       footerRef.current.scrollIntoView({ behavior: "smooth" });
@@ -158,7 +156,7 @@ const HomePage = () => {
         <div className="infoTabs-container">
           <div className="infoTabs">
             <div className="infoTab">
-              <img src="./images/RandS.jpg" alt="Research & Solution" />
+              <img src="./images/RandS.png" alt="Research & Solution" />
               <h3>Research & Solution</h3>
               <p>
                 Our research-driven framework delivers solutions based on
@@ -186,11 +184,10 @@ const HomePage = () => {
         </div>
       </div>
 
-      {/* Add the products section: */}
 
       <div className="products-section">
         <h2 className="section-title">
-          <span class="highlight">Our</span> Products
+          <span className="highlight">Our</span> Products
         </h2>
         <Slider {...sliderSettings} className="product-slider">
           {products.map((product) => (
@@ -208,13 +205,8 @@ const HomePage = () => {
         </Slider>
       </div>
 
-      {/* Section For TagCloud */}
+      <TextShpere />
 
-      <TextShpere/>
-      {/* <SphereGallery/> */}
-      
-
-      {/* Add The Contact-Us Page */}
       <footer ref={footerRef}>
         <Footer />
       </footer>

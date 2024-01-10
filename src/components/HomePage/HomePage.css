@@ -17,6 +17,102 @@
 
 }
 
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  /* Intro Section */
+  .intro-section {
+    height: auto;
+    padding: 30px 15px;
+    flex-wrap: wrap;
+  }
+
+  .intro-text {
+    width: 100%;
+    margin-left: 10px;
+  }
+  .intro-text h1 {
+    font-size: 24px !important;
+  }
+
+  .intro-text .highlight { 
+    font-size: 3rem !important; 
+  }
+  
+
+  .intro-video {
+    width: 91% !important;
+    position: relative;
+    max-width: 800px; 
+    perspective: 1000px;
+    background: transparent;
+  }
+
+  .intro-video video {
+    width: 100%;
+  }
+
+  /* About-Us Section */
+  .about-us-container {
+    padding: 20px 15px;
+    height: auto;
+  }
+
+  .container-aboutUS {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .about-us {
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  /* Adjustments for smaller screens within the About-Us section */
+
+  /* Info Tabs Section */
+  .infoTabs-container {
+    padding: 10px 15px;
+    text-align: center;
+  }
+
+  .infoTabs {
+    grid-template-columns: 1fr;
+    grid-gap: 15px;
+  }
+
+  .infoTab {
+    border-radius: 0;
+  }
+
+  /* Adjustments for smaller screens within the Info Tabs section */
+
+  /* Fun Fact Section */
+  .fun-fact-container {
+    padding: 20px 15px;
+  }
+
+  /* Adjustments for smaller screens within the Fun Fact section */
+
+  /* Product Section */
+  .products-section {
+    padding:  0% 0% 10% 0%!important;
+    
+  }
+
+  .product-slider {
+    margin-top: 0px !important;
+}
+  
+  .section-title {
+    margin-bottom: 0px !important;
+  }
+
+
+  /* Adjustments for smaller screens within the Product section */
+
+  /* Remaining styles for other sections remain unchanged */
+}
+
 .intro-text h1 {
   font-size: 2.3rem; 
   margin-left: 0px; 
@@ -140,7 +236,7 @@
     .aboutUsImg{
       border-radius: 5px;
     }
- 
+
 
   }
   

@@ -19,6 +19,7 @@
 
 .techStack {
     display: flex;
+    width: 100%;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
@@ -30,13 +31,14 @@
   
   .intro-text-lefts {
     flex: 1;
-    max-width: 50%; 
+    max-width: 100%; 
     color: Black;
     text-align: left;
   }
   
   .tagcloud-container {
     flex: 1;
+    width: 100%;
     display: flex;
     justify-content: center; /* Center the tag cloud */
     align-items: center; /* Align items in the center */
@@ -89,6 +91,9 @@
     .tagcloud-container{
     padding: 0%;
     }
+    .techStack {
+    padding: 30px;
+    }
   }
 
 
@@ -120,10 +125,7 @@
     transition: transform 0.3s ease-in-out;
   }
   
-  .contactButton_Techs:hover {
-    /* Add hover effect */
-    transform: scale(1.1);
-  }
+
   
   /* Example animation for the button */
   @keyframes pulse {

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Card, CardContent, CardMedia, Typography, Grid } from '@mui/material';
+import { useMediaQuery } from '@mui/material';
 import "./ProductAndSolution.css"; 
 import Footer from "../Footer/Footer";
 import TextShpere from "../TechStack/TextShpere";
@@ -48,11 +49,12 @@ const ProductCarousel = () => {
     setCurrentProductVideo("");
   };
 
+
   
 
   return (
     <div className="product-carousel">
-      <Carousel showThumbs={false} infiniteLoop autoPlay showArrows>
+      <Carousel showThumbs={false} infiniteLoop autoPlay showArrows={false}>
         {products.map((product, index) => (
           <div key={index} className="product-slide">
             <div className="product-info">
@@ -126,6 +128,7 @@ const ProductAndSolution = () => {
     },
     // Add more card data objects as needed
   ];
+  const isSmallScreen = useMediaQuery('(max-width:768px)');
   
   return (
     <div className="product-and-solution">
@@ -136,16 +139,16 @@ const ProductAndSolution = () => {
 
       {/* The solution section content goes here: */}
       <div className="solutions">
-        <div className="solutions-container">
-        <Grid container spacing={3}>
-          {cardData.map((data, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <CustomCard
-                image={data.image}
-                title={data.title}
-                description={data.description}
-              />
-            </Grid>
+        <div className={`solutions-container ${isSmallScreen ? 'small-screen' : ''}`}>
+          <Grid container spacing={isSmallScreen ? 1 : 3}>
+            {cardData.map((data, index) => (
+              <Grid item xs={12} sm={isSmallScreen ? 12 : 6} md={4} key={index}>
+                <CustomCard
+                  image={data.image}
+                  title={data.title}
+                  description={data.description}
+                />
+              </Grid>
           ))}
         </Grid>
         </div>

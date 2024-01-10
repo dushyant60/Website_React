@@ -75,7 +75,7 @@ const TextShpere = () => {
       let radius = 320; // Default radius
       if (screenWidth <= 768) {
         // Adjust radius for smaller screens
-        radius = 100; // Change the radius value for smaller screens
+        radius = 160; // Change the radius value for smaller screens
       }
 
       const options = {
