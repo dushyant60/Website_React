@@ -88,14 +88,13 @@
   }
 
   .bfsi-grid-section {
-    display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    display: flex;
+  flex-direction: column;
   gap: 20px;
   }
   
   .bfsi-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Three columns */
+    display: flex;
     gap: 4%; /* Adjust gap between grid items */
     /* max-width: 900px; Set a maximum width for the grid */
     width: 90%; /* Ensure full width */
@@ -226,11 +225,27 @@
   padding: 50px 2%; /* Adjust padding for spacing */
   height: 100%;
   color: red;
+
   /* Unique styling for the paragraph */
   p {
     font-size: 14px;
   }
 
+}
+
+.bfsi-grid {
+ flex-wrap: wrap;
+ gap: 20px;
+ margin-bottom: 10%;
+}
+.banking-section {
+ width: 100%;
+ height: auto;
+ padding: 10px;
+}
+.gif-banking{
+  width: 100%;
+  height: auto;
 }
 
   }

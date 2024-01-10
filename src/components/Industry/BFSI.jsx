@@ -3,11 +3,13 @@ import React, { useState } from "react";
 import Footer from "../Footer/Footer";
 import TextShpere from "../TechStack/TextShpere";
 import WorkProcess from "./WorkProcess/WorkProcess";
+import WorkProcessSmall from "./WorkProcess/WorkProcessSmall";
 import "./Industry.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { useMediaQuery } from '@mui/material';
 
 const BFSI = ({ headingText, introText, paragraphText, carouselImages }) => {
   const [showBanking, setShowBanking] = useState(false);
@@ -27,6 +29,8 @@ const BFSI = ({ headingText, introText, paragraphText, carouselImages }) => {
     "./images/CapitalMarketImg.jpeg",
     "./images/InsuranceImage.jpeg",
   ];
+  const isSmallScreen = useMediaQuery('(max-width: 1024px)');
+
 
   const handleGridItemClick = (itemTitle) => {
     switch (itemTitle) {
@@ -126,7 +130,7 @@ const BFSI = ({ headingText, introText, paragraphText, carouselImages }) => {
         {/* Sections for Banking, Insurance, Investment */}
 
         {showBanking && (
-          <section className="banking-section">
+          <section className="banking-section" style={{marginBottom:"20px"}}>
             <div className="gif-container">
               <img
                 className="gif-banking"
@@ -138,7 +142,7 @@ const BFSI = ({ headingText, introText, paragraphText, carouselImages }) => {
         )}
 
         {showInvestment && (
-          <section className="banking-section">
+          <section className="banking-section" style={{marginBottom:"20px"}}>
             <div className="gif-container">
               <img
                 className="gif-banking"
@@ -149,7 +153,7 @@ const BFSI = ({ headingText, introText, paragraphText, carouselImages }) => {
           </section>
         )}
         {showInsurance && (
-          <section className="banking-section">
+          <section className="banking-section" style={{marginBottom:"20px"}}>
             <div className="gif-container">
               <img
                 className="gif-banking"
@@ -161,8 +165,17 @@ const BFSI = ({ headingText, introText, paragraphText, carouselImages }) => {
         )}
       </div>
 
-      {/* Work Process Section */}
-      <WorkProcess />
+      {isSmallScreen ? (
+        <section className="work-process-section">
+          {/* Render the WorkProcessSmall component for small screens */}
+          <WorkProcessSmall />
+        </section>
+      ) : (
+        <section className="work-process-section">
+          {/* Render the WorkProcess component for larger screens */}
+          <WorkProcess />
+        </section>
+      )}
 
       {/* Join-us and TextStack Goes Here */}
       <TextShpere />
