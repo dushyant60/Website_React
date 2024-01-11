@@ -14,6 +14,10 @@
 .navbar-brand img {
   width: 180px; /* Adjust logo image size */
 }
+.me-auto{
+  margin-left: auto !important;
+  margin-right: 10px !important;
+}
 
 .nav-link {
   color: #fff; /* Set the color of the links */

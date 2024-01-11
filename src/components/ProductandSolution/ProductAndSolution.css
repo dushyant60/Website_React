@@ -294,7 +294,7 @@
 @media screen and (max-width: 768px){
   .solutions-container {
     display: flex; 
-    padding: 2%;
+    padding: 5%;
     width: 100%;
   }
   .custom-card{

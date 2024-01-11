@@ -118,7 +118,7 @@ const ProductAndSolution = () => {
     },
     {
       image: "./images/Datawarehouse.png",
-      title: "Datawarehouse",
+      title: "Data Warehouse",
       description: "Effective & Optimized solutions for future ready Datawarehouse.",
     },
     {

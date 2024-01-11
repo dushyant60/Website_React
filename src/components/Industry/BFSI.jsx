@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { useState } from "react";
+import React, {useState, useEffect, useRef } from "react";
 import Footer from "../Footer/Footer";
 import TextShpere from "../TechStack/TextShpere";
 import WorkProcess from "./WorkProcess/WorkProcess";
@@ -15,11 +15,42 @@ const BFSI = ({ headingText, introText, paragraphText, carouselImages }) => {
   const [showBanking, setShowBanking] = useState(false);
   const [showInsurance, setShowInsurance] = useState(false);
   const [showInvestment, setShowInvestment] = useState(false);
+
+  const bankingSectionRef = useRef(null);
+  const investmentSectionRef = useRef(null);
+  const insuranceSectionRef = useRef(null);
+  const navbarRef = useRef(null); // Add a ref for the Navbar
+
+  const additionalScrollOffset = -150;
+
+  useEffect(() => {
+    // Function to scroll to the opened section
+    const scrollToOpenedSection = () => {
+      const navbarHeight = navbarRef.current ? navbarRef.current.clientHeight : 0;
+
+      if (showBanking && bankingSectionRef.current) {
+        const offsetTop = bankingSectionRef.current.offsetTop - navbarHeight + additionalScrollOffset;
+        window.scrollTo({ top: offsetTop, behavior: "smooth" });
+      }
+      if (showInvestment && investmentSectionRef.current) {
+        const offsetTop = investmentSectionRef.current.offsetTop - navbarHeight + additionalScrollOffset;
+        window.scrollTo({ top: offsetTop, behavior: "smooth" });
+      }
+      if (showInsurance && insuranceSectionRef.current) {
+        const offsetTop = insuranceSectionRef.current.offsetTop - navbarHeight + additionalScrollOffset;
+        window.scrollTo({ top: offsetTop, behavior: "smooth" });
+      }
+    };
+
+    // Call the function after the component updates
+    scrollToOpenedSection();
+  }, [showBanking, showInvestment, showInsurance]);
+
   // Sample content for sections if not provided
 
   const headingMain = `BFSI`;
 
-  const headingIntroText = `Empower your BFSI organization with data-driven insights and improve decision-making with our advanced data science solutions.`;
+  const headingIntroText = ` "Empower your BFSI organization with data-driven insights and improve decision-making with our advanced data science solutions." `;
 
   const headingParagraphText = `The BFSI market has demonstrated significant growth in recent years and is expected to continue expanding in the near future. In 2022, the market was valued approximately at 24.5 trillion dollars and is projected to approach 30 trillion dollars by 2025. This growth can be attributed to a variety of factors, including the increasing adoption of digital technologies, the rise of open banking regulations, and the growing demand for personalized financial products and services.`;
 
@@ -130,7 +161,7 @@ const BFSI = ({ headingText, introText, paragraphText, carouselImages }) => {
         {/* Sections for Banking, Insurance, Investment */}
 
         {showBanking && (
-          <section className="banking-section" style={{marginBottom:"20px"}}>
+          <section className="banking-section" style={{marginBottom:"20px"}} ref={bankingSectionRef}>
             <div className="gif-container">
               <img
                 className="gif-banking"
@@ -142,7 +173,7 @@ const BFSI = ({ headingText, introText, paragraphText, carouselImages }) => {
         )}
 
         {showInvestment && (
-          <section className="banking-section" style={{marginBottom:"20px"}}>
+          <section className="banking-section" style={{marginBottom:"20px"}} ref={investmentSectionRef}>
             <div className="gif-container">
               <img
                 className="gif-banking"
@@ -153,7 +184,7 @@ const BFSI = ({ headingText, introText, paragraphText, carouselImages }) => {
           </section>
         )}
         {showInsurance && (
-          <section className="banking-section" style={{marginBottom:"20px"}}>
+          <section className="banking-section" style={{marginBottom:"20px"}} ref={insuranceSectionRef}>
             <div className="gif-container">
               <img
                 className="gif-banking"
@@ -184,6 +215,13 @@ const BFSI = ({ headingText, introText, paragraphText, carouselImages }) => {
       <footer>
         <Footer />
       </footer>
+
+{/* Scroll to the opened section */}
+      {showBanking && bankingSectionRef.current && bankingSectionRef.current.scrollIntoView({ behavior: "smooth" })}
+      {showInvestment && investmentSectionRef.current && investmentSectionRef.current.scrollIntoView({ behavior: "smooth" })}
+      {showInsurance && insuranceSectionRef.current && insuranceSectionRef.current.scrollIntoView({ behavior: "smooth" })}
+      
+
     </div>
   );
 };

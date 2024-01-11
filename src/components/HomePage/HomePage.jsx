@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -9,6 +9,9 @@ import TextShpere from "../TechStack/TextShpere";
 import "./HomePage.css";
 
 const HomePage = () => {
+  
+  const navigate = useNavigate();
+
   const products = [
     {
       id: 1,
@@ -65,6 +68,12 @@ const HomePage = () => {
     if (footerRef && footerRef.current) {
       footerRef.current.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const redirectToProductAndSolutions = () => {
+    navigate("/productandsolutions");
+    window.location.reload(); // Reload the page
+    // window.scrollTo({ top: 0, behavior: "smooth" });
   };
   
   return (
@@ -137,7 +146,7 @@ const HomePage = () => {
             <h1>Let's transform together!"</h1>
             <div className="buttons-container">
               <button className="contact-button" onClick={scrollToFooter}>Contact Us</button>
-              <Link to="/productandsolutions" className="products-button" style={{
+              <Link onClick={redirectToProductAndSolutions} className="products-button" style={{
                 textDecoration: 'none', // Remove underline
                 fontSize: '16px',
               }}>
@@ -197,7 +206,12 @@ const HomePage = () => {
                 <div className="product-details">
                   <h3>{product.name}</h3>
                   <p>{product.description}</p>
-                  <Link to="/productandsolutions" className="product-btn" style={{textDecoration: 'none'}}>View Details</Link>
+                  <Link className="product-btn" onClick={redirectToProductAndSolutions} style={{
+                textDecoration: 'none', // Remove underline
+                fontSize: '16px',
+              }}>
+                      View Details
+                    </Link>
                 </div>
               </div>
             </div>
