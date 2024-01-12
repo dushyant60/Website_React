@@ -1,36 +1,42 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLightbulb, faCode, faRocket } from '@fortawesome/free-solid-svg-icons';
+import { FaBrain, FaCog, FaDesktop } from 'react-icons/fa';
 import './WorkProcessSmall.css';
 
 const WorkProcessSmall = () => {
   return (
-    <section className="work-process-small">
-      <div className="container">
-        <h2 className="section-title-wp">Our Work Process</h2>
-        <div className="process-steps">
-          <div className="process-step">
-            <div className="step-icon">
-              <FontAwesomeIcon icon={faLightbulb} />
-            </div>
-            <h3>Problem Formulation</h3>
-          </div>
-          <div className="process-step">
-            <div className="step-icon">
-              <FontAwesomeIcon icon={faCode} />
-            </div>
-            <h3>Applying Algorithm</h3>
-          </div>
-          <div className="process-step">
-            <div className="step-icon">
-              <FontAwesomeIcon icon={faRocket} />
-            </div>
-            <h3>Product Implementation</h3>
-          </div>
-        </div>
+    <div className="work-process-section">
+      <div className="background-shapes"></div>
+      <h1 className='Wp_h1_Small'>Our Work Process</h1>
+
+      <div className="Wp_step">
+      <FaBrain size={60} className="Wp_icon brain" />
+        <h2>Problem Formulation</h2>
+        
+        <p>
+          Clearly define the problem you're solving. Understand the requirements and constraints.
+        </p>
       </div>
-    </section>
+
+      <div className="Wp_step">
+      <FaCog size={60} className="Wp_icon cog" />
+        <h2>Applying Algorithm</h2>
+       
+        <p>
+          Develop and apply appropriate algorithms to solve the identified problem. Test and iterate as needed.
+        </p>
+      </div>
+
+      <div className="Wp_step">
+      <FaDesktop size={60} className="Wp_icon desktop" />
+        <h2>Product Implementation</h2>
+        
+        <p>
+          Bring the solution to life. Implement the product, considering scalability, usability, and maintainability.
+        </p>
+      </div>
+    </div>
   );
 };
+
 
 export default WorkProcessSmall;

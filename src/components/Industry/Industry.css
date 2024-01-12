@@ -103,6 +103,7 @@
     /* max-width: 900px; Set a maximum width for the grid */
     width: 90%; /* Ensure full width */
     margin: 0 auto; /* Center align the grid */
+    padding-bottom: 20px;
   }
   
   .bfsi-grid-item {

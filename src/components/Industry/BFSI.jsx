@@ -18,7 +18,7 @@ const BFSI = ({ headingText, introText, paragraphText, carouselImages }) => {
 
   const bankingSectionRef = useRef(null);
   const investmentSectionRef = useRef(null);
-  const insuranceSectionRef = useRef(null);
+  const insuranceSectionRef = useRef(null);                                                                                        
   const navbarRef = useRef(null); // Add a ref for the Navbar
 
   const additionalScrollOffset = -150;

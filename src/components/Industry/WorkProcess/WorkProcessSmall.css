@@ -1,52 +1,144 @@
-/* WorkProcessSmall.css */
-.work-process-small {
-  background-color: #f8f8f8;
-  padding: 40px 0;
-}
+/* Common styles for all screen sizes */
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-.section-title-wp {
+.work-process-section {
   text-align: center;
-  margin-bottom: 20px;
-  font-size: 2rem;
-  color: #333;
+  /* padding: 20px 0; */
+  position: relative;
+  margin-bottom: -10px;
+  /* padding-top: 20px; */
+  /* padding-bottom: 20px; */
 }
 
-.process-steps {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
+
+.background-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, #596275, #78849e);
+  z-index: -1;
 }
 
-.process-step {
-  flex: 1 1 calc(33.33% - 20px);
-  border-radius: 50%; /* Make the steps circular */
+.background-shapes::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    -45deg,
+    #bdc3c7,
+    #bdc3c7 10px,
+    #95a5a6 10px,
+    #95a5a6 20px
+  );
+  clip-path: polygon(100% 0, 0 100%, 100% 100%);
+}
+
+.background-shapes::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    #ecf0f1,
+    #ecf0f1 10px,
+    #d5dbdb 10px,
+    #d5dbdb 20px
+  );
+  clip-path: polygon(100% 0, 0 100%, 100% 100%);
+}
+
+
+/* Desktop and larger screens */
+
+.Wp_step {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
   background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  padding: 20px; /* Adjust padding for circular shape */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
 }
 
-.step-icon {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  color: #5c0e00;
+.Wp_icon {
+  margin-bottom: 20px;
+  font-size: 3rem;
+  color: #020424;
 }
 
-.process-step h3 {
+.Wp_step h2 {
+  color: #0d152e;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.Wp_step h2::first-letter {
+  color: #e74c3c; /* You can use any color you prefer */
+  font-size: 120%; /* Adjust the size as needed */
+}
+
+.Wp_step h2::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 2px;
+  background-color: #3498db;
+}
+
+.Wp_step p {
+  color: #555;
   font-size: 1rem;
-  margin-bottom: 15px;
-  color: #000000;
+  line-height: 1.4;
 }
 
-@media (max-width: 768px) {
-  .process-step {
-    flex: 1 1 calc(50% - 20px); /* Adjust width for smaller screens */
+.Wp_h1_Small {
+  color: #fff;
+  font-size: 2.5rem;
+  padding-top: 20px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile and smaller screens */
+
+@media only screen and (max-width: 1024px) {
+  .Wp_step {
+    margin: 10px;
+    padding: 15px;
+    padding-top: 0;
+    border-radius: 12px;
+  }
+
+  .Wp_icon {
+    font-size: 2rem;
+  }
+
+  .Wp_step h2 {
+    font-size: 1.5rem;
+  }
+
+  .Wp_step p {
+    font-size: 0.9rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+  .work-process-section {
+    padding-bottom: 20px;
   }
 }
