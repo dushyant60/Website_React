@@ -1,7 +1,7 @@
 .bfsi-content{
     margin-top: 3%;
     row-gap: 20px;
-    background-image: url(E:\git_realm\Website_React\public\images\BG_3.jpg);
+    background-image: url(/public/images/BG_3.jpg);
     /* background-position:b; */
     /* background-size: cover; */
 }
@@ -274,4 +274,43 @@
   padding: 5%;
 }
 
+  }
+
+
+                                            /* Enegy Page */   
+
+  .energyintro-section{
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center align items vertically */
+    background-image: url(/public/images/energy.jpg);
+    /* background-color: #1174b7; */
+    background-position: center;
+    background-size: cover;
+    flex-direction: row;
+  }
+  
+  .energyparagraph-section.modern-heading {
+    text-align: center; /* Center align text */
+    padding: 50px 5%; /* Adjust padding for spacing */
+    height: 100%;
+  
+    /* Unique styling for the paragraph */
+    p {
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      line-height: 1.8;
+      font-weight: 500;
+      color: #000000; /* Change text color */
+      /* max-width: 800px; Limit text width for better readability */
+      /* margin: 0 auto; Center align text */
+      position: relative;
+      text-align: justify;
+    }
+
+    img {
+      max-width: 100%; /* Ensure the image stays within its container */
+      height: auto; /* Maintain aspect ratio */
+      border-radius: 50px;
+    }
+  
   }
