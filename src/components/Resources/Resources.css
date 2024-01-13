@@ -1,0 +1,102 @@
+/* Resource.css */
+
+.resource-page {
+    font-family: 'Roboto', sans-serif;
+    background-image: url(/public/images/BG_3.jpg);
+    width: 100%;
+    /* margin-top: 7%; */
+  }
+  
+  .resource-carousel-section {
+    margin: 50px auto;
+    width: 90%;
+    padding-top: 2.5%;
+  }
+  
+  .resource-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+    background-color: rgba(255, 255, 255, 0.6);
+    /* padding: 20px; */
+  }
+  
+  .slick-initialized .slick-slide {
+    display: block;
+    padding: 20px;
+  }
+  
+  .resource-card img {
+    width: 100%;
+    object-fit: contain; /* Maintain aspect ratio and cover the entire container */
+    /* border-radius: 10px 10px 0 0; */
+    aspect-ratio: 3/2;
+    padding: 20px;
+  }
+  
+  .resource-card:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255);
+  }
+  
+  .resource-card-content {
+    padding: 20px;
+  }
+  
+  .resource-card-content h3 {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  
+  .resource-card-content p {
+    font-size: 1.1rem;
+    color: #555;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+  
+  .read-more-button {
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    will-change: box-shadow, transform;
+    background: radial-gradient(100% 100% at 100% 0%, #89E5FF 0%, #5468FF 100%);
+    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
+    padding: 0 20px;
+    border-radius: 6px;
+    color: #fff;
+    height: 40px;
+    font-size: 14px;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+    :active {
+      box-shadow: inset 0px 3px 7px #3c4fe0;
+      transform: translateY(2px);
+    }
+  }
+  
+  .read-more-button:hover {
+    box-shadow: 0px 4px 8px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px #3c4fe0;
+    transform: translateY(-5px);
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 1024px) {
+    .resource-carousel-section {
+      margin: 20px auto;
+      padding-top: 15%;
+    }
+  
+    .resource-card {
+      /* margin: 0 10px;    */
+    }
+  
+    .resource-card-content {
+      padding: 15px;
+    }
+  }
+  

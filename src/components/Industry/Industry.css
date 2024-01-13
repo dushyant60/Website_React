@@ -1,22 +1,15 @@
-.bfsi-content{
+.industry-content{
     margin-top: 3%;
     row-gap: 20px;
     background-image: url(/public/images/BG_3.jpg);
     /* background-position:b; */
     /* background-size: cover; */
 }
-/* Define styles for responsive image */
-.bfsiresponsive-image {
-    max-width: 100%; /* Set the maximum width to 100% of its container */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Override default inline display for proper alignment */
-  }
   
   /* Adjust alignment of intro-section elements */
-  .bfsiintro-section {
+  .industry-intro-section {
     display: flex; /* Use flexbox for layout */
     align-items: center; /* Center align items vertically */
-    background-image: url(/public/images/bfsi.jpg);
     /* background-color: #1174b7; */
     background-position: center;
     background-size: cover;
@@ -24,10 +17,10 @@
   }
   
   /* Position intro-text on the left */
-  .bfsiintro-text {
+  .industry-intro-text {
     padding: 180px 90px; /* Add padding for spacing */
     text-align: left; /* Align text to the left */
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.8);
     z-index: 2;
     color: rgb(7, 7, 7);
     font-size: 1.4rem;
@@ -35,12 +28,12 @@
   }
   
   /* Position intro-image on the right */
-  .bfsiintro-image {
+  .industryImage {
     flex: 1; /* Take remaining space */
     text-align: right; /* Align image to the right */
   }
 
-  .bfsiparagraph-section.modern-heading {
+  .industry-paragraph-section.modern-heading {
     text-align: center; /* Center align text */
     padding: 50px 5%; /* Adjust padding for spacing */
     height: 100%;
@@ -87,40 +80,40 @@
     /* Additional styling for the text container */
   }
 
-  .bfsiImage{
+  .industryImage{
     border-radius: 50px;
   }
 
-  .bfsi-grid-section {
+  .industry-grid-section {
     display: flex;
-  flex-direction: column;
-  gap: 20px;
+    justify-content: center;
+    align-items: center;
   }
   
-  .bfsi-grid {
-    display: flex;
-    gap: 4%; /* Adjust gap between grid items */
-    /* max-width: 900px; Set a maximum width for the grid */
-    width: 90%; /* Ensure full width */
-    margin: 0 auto; /* Center align the grid */
+  .industry-grid {
+    display: grid;
+    padding: 0% 6%;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 3fr));
+    width: 100%;
+    gap: 20px;
     padding-bottom: 20px;
   }
   
-  .bfsi-grid-item {
+  .industry-grid-item {
     position: relative;
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  .bfsi-grid-item img {
+  .industry-grid-item img {
     width: 100%;
-    height: 100%;
-    display: block;
+    height: auto;
     border-radius: 8px;
-  }
+  } 
   
   /* Overlay styles */
-  .bfsi-grid-item-overlay {
+  .industry-grid-item-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -150,27 +143,30 @@
     /* Add more styles for hover effect as needed */
   }
 
-  .bfsi-grid-item-overlay button .svg-inline--fa {
+  .industry-grid-item-overlay button .svg-inline--fa {
     margin-left: 5px; /* Adjust icon position */
   }
   
 /* styles.css */
 
 /* Banking Section */
-.banking-section {
+.additional-section {
   padding: 80px;
   background-color: #ffffff;
   border-radius: 8px;
   animation: fadeIn 0.5s ease-in-out;
 }
 
-.gif-container{
+.additional-section-content{
  width: 100%;
+ padding-left: 10%;
+ padding-right: 10%;
 
 }
 
-.gif-banking{
-  width: 100%  
+.gif-usecases {
+  width: 100%;
+  padding: 0px;  
 }
 
 
@@ -189,14 +185,14 @@
 
 
   /* Show overlay on hover */
-  .bfsi-grid-item:hover .bfsi-grid-item-overlay {
+  .industry-grid-item:hover .industry-grid-item-overlay {
     opacity: 1;
   }
   
   /* Additional styles for overlay content */
-  .bfsi-grid-item-overlay h3,
-  .bfsi-grid-item-overlay p,
-  .bfsi-grid-item-overlay button {
+  .industry-grid-item-overlay h3,
+  .industry-grid-item-overlay p,
+  .industry-grid-item-overlay button {
     margin: 5px;
   }
   
@@ -204,13 +200,20 @@
   @media screen and (max-width: 768px) {
     /* Modify styles for smaller screens */
 
-    .bfsiintro-section {
+    .industry-intro-section {
       padding: 0 15px !important; /* Add padding to the intro-section */
       width: 100% !important;
       height: 100%;
       padding:80px 5% 10% 5%!important;
     }
-    .bfsiintro-section::before {
+
+    .industry-intro-section {
+      padding: 0 15px !important; /* Add padding to the intro-section */
+      width: 100% !important;
+      height: 100%;
+      padding:80px 5% 10% 5%!important;
+    }
+    .industry-intro-section::before {
       content: "";
       position: absolute;
       top: 0;
@@ -220,7 +223,7 @@
       background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(208, 208, 208, 0.1));
       z-index: 1;
     }
-    .bfsiintro-text{
+    .industry-intro-text{
       padding: 15px !important; /* Add padding to the intro-section */
       width: 100% !important;
       background: transparent;
@@ -243,7 +246,7 @@
     width: 100%;
 }
 
-.bfsiparagraph-section.modern-heading {
+.industry-paragraph-section.modern-heading {
   text-align: left; /* Center align text */
   padding: 10px 2%; /* Adjust padding for spacing */
   height: 100%;
@@ -256,61 +259,31 @@
 
 }
 
-.bfsi-grid {
+.industry-grid {
  flex-wrap: wrap;
  gap: 20px;
+ grid-template-columns: repeat(auto-fill, minmax(250px, 3fr));
  margin-bottom: 10%;
 }
-.banking-section {
- width: 100%;
- height: auto;
- padding: 10px;
+
+.additional-section{
+padding: 10px;
 }
-.gif-banking{
+
+.additional-section-content{
   width: 100%;
-  height: auto;
-}
-.bfsiImage{
+  /* padding-left: 10%;
+  padding-right: 10%; */
+ 
+ }
+ 
+ .gif-usecases {
+   width: 100%;
+   padding: 0px;  
+ }
+ 
+.industryImage{
   padding: 5%;
 }
+}
 
-  }
-
-
-                                            /* Enegy Page */   
-
-  .energyintro-section{
-    display: flex; /* Use flexbox for layout */
-    align-items: center; /* Center align items vertically */
-    background-image: url(/public/images/energy.jpg);
-    /* background-color: #1174b7; */
-    background-position: center;
-    background-size: cover;
-    flex-direction: row;
-  }
-  
-  .energyparagraph-section.modern-heading {
-    text-align: center; /* Center align text */
-    padding: 50px 5%; /* Adjust padding for spacing */
-    height: 100%;
-  
-    /* Unique styling for the paragraph */
-    p {
-      font-family: 'Arial', sans-serif;
-      font-size: 18px;
-      line-height: 1.8;
-      font-weight: 500;
-      color: #000000; /* Change text color */
-      /* max-width: 800px; Limit text width for better readability */
-      /* margin: 0 auto; Center align text */
-      position: relative;
-      text-align: justify;
-    }
-
-    img {
-      max-width: 100%; /* Ensure the image stays within its container */
-      height: auto; /* Maintain aspect ratio */
-      border-radius: 50px;
-    }
-  
-  }

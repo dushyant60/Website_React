@@ -5,8 +5,8 @@ import './App.css';
 import CustomNavbar from './components/Navbar/CustomNavbar';
 import HomePage from './components/HomePage/HomePage';
 import ProductAndSolution from './components/ProductandSolution/ProductAndSolution';
-import Technology from './components/Technology';
-import Resources from './components/Resources';
+import Technology from './components/Technology/Technology';
+import Resources from './components/Resources/Resources';
 import About from './components/About';
 import Career from './components/Career';
 import BFSI from './components/Industry/BFSI';
@@ -14,7 +14,7 @@ import Energy from './components/Industry/Energy';
 import Manufacturing from './components/Industry/Manufacturing';
 import Retail from './components/Industry/Retail';
 import HealthCare from './components/Industry/HealthCare';
-import Automation from './components/Industry/Automation';
+import Automotive from './components/Industry/Automotive';
 import Telecommunications from './components/Industry/Telecommunication';
 
 function App() {  
@@ -32,7 +32,7 @@ function App() {
               <Route path="/manufacturing" element={<Manufacturing />} />
               <Route path="/retail" element={<Retail />} />
               <Route path="/healthcare" element={<HealthCare />} />
-              <Route path="/automation" element={<Automation />} />
+              <Route path="/automotive" element={<Automotive />} />
               <Route path="/telecommunications" element={<Telecommunications />} />
           {/* Industry End */}
           

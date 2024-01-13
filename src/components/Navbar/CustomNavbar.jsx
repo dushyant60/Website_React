@@ -34,8 +34,8 @@ const CustomNavbar = () => {
               <NavDropdown.Item href="/healthcare" className="dropdown-item">
                 Health Care
               </NavDropdown.Item>
-              <NavDropdown.Item href="/automation" className="dropdown-item">
-                Automation
+              <NavDropdown.Item href="/automotive" className="dropdown-item">
+                Automotive
               </NavDropdown.Item>
               <NavDropdown.Item href="/telecommunications" className="dropdown-item">
                 Telecommunications
