@@ -7,7 +7,7 @@ import HomePage from './components/HomePage/HomePage';
 import ProductAndSolution from './components/ProductandSolution/ProductAndSolution';
 import Technology from './components/Technology/Technology';
 import Resources from './components/Resources/Resources';
-import About from './components/About';
+import About from './components/About_Us/About';
 import Career from './components/Career';
 import BFSI from './components/Industry/BFSI';
 import Energy from './components/Industry/Energy';
@@ -39,7 +39,7 @@ function App() {
           <Route path="/technology" element={<Technology/>} />
           <Route path="/resources" element={<Resources/>} />
           <Route path="/about" element={<About/>} />
-          <Route path="/career" celement={<Career/>} />
+          <Route path="/career" element={<Career/>} />
         </Routes> 
         </Router>
 

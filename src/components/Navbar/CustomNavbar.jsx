@@ -44,7 +44,7 @@ const CustomNavbar = () => {
             <Nav.Link href="/technology" className="nav-link">Technology</Nav.Link>
             <Nav.Link href="/resources" className="nav-link">Resources</Nav.Link>
             <Nav.Link href="/about" className="nav-link">About</Nav.Link>
-            <Nav.Link href="/career" className="nav-link">Career</Nav.Link>
+            <Nav.Link href="https://onelogica.com/careers.html" className="nav-link">Career</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

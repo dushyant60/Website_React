@@ -26,7 +26,7 @@
 }
 
 .nav-link:hover {
-  color: #ffcc00; /* Change the color on hover */
+  color: #ff4000; /* Change the color on hover */
 }
 
 .custom-dropdown {
@@ -40,5 +40,5 @@
 
 .dropdown-item:hover {
   background-color: #eee; /* Change the background color on hover */
-  color: #fff; /* Change the text color on hover */
+  color: #333; /* Change the text color on hover */
 }

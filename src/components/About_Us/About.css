@@ -1,0 +1,310 @@
+/* AboutUsPage.css */
+
+.aboutus-page-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    /* padding: 40px; */
+  }
+  
+  .aboutus-intro-section {
+    background-color: #f0f0f0;
+    padding-top: 15%;
+    /* border-radius: 10px; */
+    /* text-align: center; */
+    /* margin-bottom: 40px; */
+    height: 70vh;
+    width: 100%;
+    background-image: url(/public/images/AboutUS_Bg.jpg);
+    background-size: cover;
+  }
+  
+/* Add these styles to your CSS file */
+
+.aboutus-intro-text {
+    max-width: 600px;
+    /* margin: 0 auto; */
+    padding-bottom: 20px; /* Add space for the underline */
+  }
+  
+  .aboutus-intro-text h1 {
+    font-size: 3rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px; /* Adjust the spacing between text and underline */
+  }
+  
+  .aboutus-intro-text h1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-radius: 50px;
+    width: 100%;
+    height: 6px; /* Adjust the thickness of the underline */
+    background-color: whitesmoke; /* Your preferred underline color */
+  }
+
+  .custom-title {
+    font-size: 2em;
+    margin-top: 5%;
+    color: #ff6347; /* Tomato color */
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .aboutus-steps-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .aboutus-steps-list li {
+    position: relative;
+    border-bottom: 2px solid #606060; /* Green border color */
+    padding: 15px 0;
+    margin: 0;
+    text-align: left;
+    /* background-color: #f0f8ff; AliceBlue background color */
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .aboutus-steps-list li:hover {
+    transform: scale(1.1);
+    background-color: #c9c9c9; /* Gold color on hover */
+    color: white;
+  }
+
+  .aboutus-steps-list li .check-icon {
+    color: #001646; /* Lime color for the checkmark */
+    font-size: 1.5em;
+    margin-right: 10px;
+    vertical-align: middle;
+    line-height: 0;
+  }
+
+  .aboutus-steps-list li span {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: 500;
+  } 
+
+  .aboutus-sectionImage{
+    width: 80%;
+  }
+
+  .aboutus-intro-text h1 {
+    color: whitesmoke;
+  }
+  
+  .aboutus-intro-text p {
+    color: #555;
+  }
+
+  .aboutus-story-section,
+  .aboutus-values-section {
+    /* background-color: #fff; */
+    position: relative;
+    padding: 40px;
+    /* border-radius: 10px; */
+    /* margin-bottom: 40px; */
+    background-image: url(/public/images/BG_1.jpg);
+    background-size: cover;
+  }
+
+  .aboutus-innovation-section{
+    position: relative;
+    padding: 40px;
+    /* border-radius: 10px; */
+    /* margin-bottom: 40px; */
+    background-color: #eaeaea;
+  }
+
+  .aboutus-modern-heading h2 {
+    color: #333;
+  }
+  
+  .aboutus-section-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .aboutus-section-image {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .aboutus-section-text {
+    text-align: left;
+    width: 100%;
+    padding: 2%;
+  }
+  
+  .aboutus-section-text h2 {
+    color: #333;
+    text-align: left;
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .aboutus-section-text p {
+    color: #555;
+    text-align: justify;
+    font-weight: 500;
+  }
+  
+ 
+  
+  /* Add your specific styles for the team members here */
+
+
+  @media (max-width: 1024px) {
+    .aboutus-section-content {
+        flex-wrap: wrap ;
+      }
+      .aboutus-story-section{
+        padding: 15px;
+      }
+      .aboutus-intro-section {
+        background-color: #f0f0f0;
+        padding-top: 85px;
+        height: 25vh;
+  }
+  .aboutus-innovation-section{
+    padding: 15px;
+  }
+  
+  .aboutus-intro-text h1 {
+    font-size: 2rem;
+    padding-bottom: 5px; /* Adjust the spacing between text and underline */
+  }
+  
+  .aboutus-intro-text h1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-radius: 50px;
+    width: 100%;
+    height: 4px; /* Adjust the thickness of the underline */
+    background-color: whitesmoke; /* Your preferred underline color */
+  }
+}
+
+
+  
+  
+  
+/* Our Team Section */
+
+.aboutus-team-section {
+    padding: 40px 40px;
+    background-color: #f7f7f7;
+    width: 100%;
+    background-image: url(/public/images/BG_1.jpg);
+  }
+  
+  .team-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .team-container h2{
+    color: #333;
+    font-size: 2.4rem;
+    text-shadow: -2px 0px 2px #333;
+    margin-bottom: 2%;
+    text-shadow: -2px 0px 2px #9c9c9c;
+}
+  
+  .content-team {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-gap: 40px;
+  }
+  
+  .box {
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+  
+  .details {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .img {
+    position: relative;
+    margin-bottom: 15px;
+  
+    img {
+      max-width: 70%;
+      border-radius: 50%;
+    }
+  
+    i {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      color: #4caf50;
+    }
+  }
+  
+  label {
+    display: block;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  
+    li {
+      display: inline-block;
+      margin-right: 10px;
+      font-size: 18px;
+      color: #333;
+    }
+  }
+  
+  .button {
+    margin-top: 20px;
+  
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+  
+      i {
+        margin-right: 5px;
+      }
+  
+      &:hover {
+        background-color: #45a049;
+      }
+    }
+  }
+  
+  @media (max-width: 748px) {
+  .content-team{
+    display: flex;
+    flex-direction: column  ;
+  }  
+}
