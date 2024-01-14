@@ -208,9 +208,9 @@ const About = () => {
       </section>
 
       {/* Footer */}
-      <footer>
-        <Footer />
-      </footer>
+      <section className="footer-section">
+          <Footer />
+        </section>
     </div>
   );
 };
