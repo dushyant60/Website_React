@@ -165,6 +165,21 @@
   /* background: linear-gradient(115deg, #56d8e4 10%, #3f01ea 90%); */
   background-color: rgb(0, 0, 0, 0.3);
     }
+
+    .close-button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;  
+      color: #818181; /* Adjust the color to your preference */
+      outline: none;
+      padding: 0;
+    }
+    
+    .close-button:hover {
+      color: #333; /* Change the color on hover if desired */
+    }
+
   .container-tech{
     max-width: 800px;
     background: #f5f5f5;

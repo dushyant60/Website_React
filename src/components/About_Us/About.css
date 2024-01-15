@@ -118,7 +118,9 @@
     padding: 40px;
     /* border-radius: 10px; */
     /* margin-bottom: 40px; */
-    background-color: #eaeaea;
+    background-image: url(/public/images/BG_1.jpg);
+    /* background-color: #eaeaea; */
+    background-size: cover;
   }
 
   .aboutus-modern-heading h2 {
@@ -261,14 +263,14 @@
       position: absolute;
       bottom: 0;
       right: 0;
-      color: #4caf50;
+      color: #078bf0;
     }
   }
   
-  label {
+  .designation {
     display: block;
     margin: 10px 0;
-    font-weight: bold;
+    /* font-weight: bold; */
     color: #333;
   }
   
@@ -288,7 +290,7 @@
     margin-top: 20px;
   
     button {
-      background-color: #4caf50;
+      background-color: #037ce7;
       color: #fff;
       border: none;
       padding: 10px 20px;
@@ -301,7 +303,7 @@
       }
   
       &:hover {
-        background-color: #45a049;
+        background-color: #0071ce;
       }
     }
   }

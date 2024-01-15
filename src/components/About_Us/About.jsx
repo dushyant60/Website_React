@@ -6,6 +6,7 @@ import Footer from "../Footer/Footer";
 import "./About.css";
 import { useMediaQuery } from "@mui/material";
 import { FaCheck } from 'react-icons/fa';
+import TextShpere from "../TechStack/TextShpere";
 
 const About = () => {
   const isSmallScreen = useMediaQuery("(max-width: 1024px)");
@@ -167,12 +168,12 @@ const About = () => {
                       <i className='fa-solid fa-circle-check'></i>
                     </div>
                     <i className='fa fa-location-dot'></i>
-                    <label>{val.designation}</label>
+                    <label className="designation">{val.designation}</label>
                     <h4>{val.name}</h4>
                     <div className='button flex'>
                       <button>
                         <i className='fa fa-envelope'></i>
-                        Message
+                        LinkedIn
                       </button>
                       {/* <button className='btn4'>
                         <i className='fa fa-phone-alt'></i>
@@ -206,6 +207,11 @@ const About = () => {
           </div>
         </div>
       </section>
+
+
+      <section className="text-sphere-section">
+          <TextShpere />
+        </section>
 
       {/* Footer */}
       <section className="footer-section">

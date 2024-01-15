@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./TextShpere.css";
 import TagCloud from "TagCloud";
 import Popup from "reactjs-popup";
+import { FaTimes } from 'react-icons/fa'; 
 
 const TextShpere = () => {
   
@@ -105,12 +106,15 @@ const TextShpere = () => {
   closeOnDocumentClick
   onClose={() => setIsOpen(false)}
   modal
+  closeButton={<button className="close-button" onClick={() => setIsOpen(false)}><FaTimes /></button>}
 >
   <div className="modal">
   <div className="container-tech">
+  <button className="close-button" onClick={() => setIsOpen(false)}><FaTimes /></button>
       <div className="text">
         Join Us
       </div>
+   
       <form action="#">
         <div className="form-row">
           <div className="input-data">
