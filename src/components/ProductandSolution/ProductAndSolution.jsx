@@ -153,6 +153,11 @@ const ProductAndSolution = () => {
         </Grid>
         </div>
       </div>
+      <div className="wwd-section">
+      <div className="wwd-img-section">
+        <img className="wwd-img" src="./images/WWD_3.png" alt="What we do" />
+       </div>
+       </div>
 
       {/* Join-us and TextStack Goes Here */}
         <TextShpere />
