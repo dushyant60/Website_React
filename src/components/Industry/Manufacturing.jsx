@@ -17,17 +17,17 @@ const Manufacturing = () => {
     {
       title: "Industrial (Product)",
       description: "We help you Shift outlook, shift approach, shift mindsets, shift gears.",
-      additionalImage: "./videos/ElectricVehicles.gif",
+      additionalImage: "./videos/Industrial_gif.gif",
     },
     {
       title: "Distribution & Logistics",
       description: "Build agile ,digital supply chains for better growth and profitability.",
-      additionalImage: "./videos/SmartManufacturing.gif",
+      additionalImage: "./videos/Distribution_gif.gif",
     },
     {
       title: "Process",
       description: "AI development involves collecting, processing data to train models, deploying them, and monitoring in production",
-      additionalImage: "./videos/EfficientResourceManagement.gif",
+      additionalImage: "./videos/Process_gif.gif",
     },  
     // Add more grid items as required
   ];

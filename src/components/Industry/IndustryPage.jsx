@@ -14,7 +14,6 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useMediaQuery } from '@mui/material';
 
 const IndustryPage = ({ headingText, introText, paragraphText, carouselImages, gridItems, backgroundImage, sectionImage }) => {
-  const [showSection, setShowSection] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
   const sectionRef = useRef(null);
@@ -23,21 +22,25 @@ const IndustryPage = ({ headingText, introText, paragraphText, carouselImages, g
   const additionalScrollOffset = isSmallScreen ? -150 : 10;
 
   useEffect(() => {
-    const scrollToOpenedSection = () => {
-      const navbarHeight = navbarRef.current ? navbarRef.current.clientHeight : 0;
+    // Set the sectionRef after the component has mounted
+    sectionRef.current = document.getElementById("additional-section");
+  }, []);
 
-      if (showSection && sectionRef.current) {
-        const offsetTop = sectionRef.current.offsetTop - navbarHeight + additionalScrollOffset;
-        window.scrollTo({ top: offsetTop, behavior: "smooth" });
-      }
-    };
-
-    scrollToOpenedSection();
-  }, [showSection]);
+  useEffect(() => {
+    // Scroll to the section when selectedItem changes
+    scrollToSection();
+  }, [selectedItem]);
 
   const handleGridItemClick = (item) => {
-    setShowSection(!showSection);
     setSelectedItem(item);
+  };
+
+  const scrollToSection = () => {
+    if (selectedItem && sectionRef.current) {
+      const navbarHeight = navbarRef.current ? navbarRef.current.clientHeight : 0;
+      const offsetTop = sectionRef.current.offsetTop - navbarHeight + additionalScrollOffset;
+      window.scrollTo({ top: offsetTop, behavior: "smooth" });
+    }
   };
 
   return (
@@ -93,24 +96,20 @@ const IndustryPage = ({ headingText, introText, paragraphText, carouselImages, g
         </section>
 
          {/* Show additional section on grid item click */}
-         {showSection && (
+         {selectedItem && (
           <section className="additional-section" style={{ marginBottom: "20px" }} ref={sectionRef}>
             {/* Display additional section content and the specific image */}
             <div className="additional-section-content">
-              {selectedItem && (
-                <>
-                  <img
-                  className="gif-usecases"
-                    src={selectedItem.additionalImage}
-                    alt={`Additional Image for ${selectedItem.title}`}
-                  />
-                  {/* Add any additional content for the selected item */}
-                </>
-              )}
+              <img
+                className="gif-usecases"
+                src={selectedItem.additionalImage}
+                alt={`Additional Image for ${selectedItem.title}`}
+              />
+              {/* Add any additional content for the selected item */}
             </div>
           </section>
         )}
-            </div>
+      </div>
 
       {/* Render WorkProcess component based on screen size */}
       {isSmallScreen ? (
@@ -132,7 +131,7 @@ const IndustryPage = ({ headingText, introText, paragraphText, carouselImages, g
       </footer>
 
       {/* Scroll to the opened section */}
-      {showSection && sectionRef.current && sectionRef.current.scrollIntoView({ behavior: "smooth" })}
+     {selectedItem && sectionRef.current && sectionRef.current.scrollIntoView({ behavior: "smooth" })}
     </div>
   );
 };

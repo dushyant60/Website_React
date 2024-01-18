@@ -1,0 +1,82 @@
+/* Career.css */
+
+.careerPage {
+    /* padding: 20px; */
+  }
+  
+  .panoramicImage {
+    background: url(/public/images/Career_Bg.jpg) center/cover no-repeat;
+    color: #fff;
+    text-align: center;
+    padding: 10% 0;
+  }
+  
+  .career-container{
+    background-image: url(/public/images/BG_3.jpg);
+    max-width: 200% !important ;
+    width: 100%;
+  }
+
+  .subheading {
+    color: #ccc;
+  }
+  
+  .readyToChange {
+    padding: 4% 0 0 0;
+  }
+  
+  .cardContainer {
+   padding:3% 3% ;
+    
+  }
+  
+  .careerCard {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 1) !important;
+    border: 1px solid #ddd; /* Add border for card separation */
+    border-radius: 15px !important; /* Optional: Add border radius for a rounded look */
+    overflow: hidden; /* Optional: Hide overflowing content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important; /* Add smooth transitions on hover */
+  
+    &:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); /* Increase the box shadow on hover */
+      transform: scale(1.05); /* Scale up the card on hover */
+    }
+  }
+  .careerCard .MuiTypography-h5 {
+    color: #333; /* Set heading text color */
+    font-weight: 600;
+  }
+  
+  .careerCard .MuiTypography-body2 {
+    color: #666; /* Set body text color */
+    padding-bottom: 5%;
+  }
+  
+  /* Styles for the buttons inside the cards */
+  .cardContent .MuiButton-containedPrimary {
+    background-color: #2196f3; /* Set primary button background color */
+    color: #fff; /* Set primary button text color */
+    border-radius: 25px !important; /* Optional: Add border-radius for a rounded button */
+    padding: 10px 20px !important; /* Optional: Adjust padding for a more spacious button */
+    transition: background-color 0.3s ease-in-out !important; /* Add smooth transition for background color on hover */
+  }
+  
+  .cardContent .MuiButton-containedPrimary:hover {
+    background-color: #1565c0; /* Darken the background color on hover */
+  }
+  
+  .cardContent {
+    margin-top: auto;
+  }
+
+  .Card-img {
+    width: 100%;
+    height: 300px; /* Set the desired height for the images */
+    object-fit: cover;
+    border-top-left-radius: 4px; /* Optional: Add border-radius for top-left corner */
+    border-top-right-radius: 4px; /* Optional: Add border-radius for top-right corner */
+  }

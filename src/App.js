@@ -8,7 +8,7 @@ import ProductAndSolution from './components/ProductandSolution/ProductAndSoluti
 import Technology from './components/Technology/Technology';
 import Resources from './components/Resources/Resources';
 import About from './components/About_Us/About';
-import Career from './components/Career';
+import Career from './components/Career/Career';
 import BFSI from './components/Industry/BFSI';
 import Energy from './components/Industry/Energy';
 import Manufacturing from './components/Industry/Manufacturing';
