@@ -45,7 +45,7 @@ const Technology = () => {
     {
       title: "LakeHouse/OneLake",
       description: "Build a unified data platform with Lakehouse architecture for efficient data management.",
-      image: "./images/icon/6.png",
+      image: "./images/icon/7.png",
     },
   ];
 
