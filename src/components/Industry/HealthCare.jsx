@@ -15,7 +15,7 @@ const HealthCare = () => {
     {
       title: "BioTechnology",
       description: "The advancements in biotechnology have led to the development of life-saving therapies and treatments for a wide range of diseases and conditions.",
-      additionalImage: "./videos/ElectricVehicles.gif",
+      additionalImage: "./videos/Biotech_gif.gif",
     },
       
     // Add more grid items as required

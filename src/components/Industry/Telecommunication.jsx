@@ -15,7 +15,7 @@ const Telecommunications = () => {
     {
       title: "Telecommunications",
       description: "Telecommunications has revolutionized the way we communicate and connect with one another.",
-      additionalImage: "./videos/ElectricVehicles.gif",
+      additionalImage: "./videos/Telecom_gif.gif",
     },
  
     // Add more grid items as required

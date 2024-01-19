@@ -18,17 +18,17 @@ const Retail = () => {
     {
       title: "E-commerce Platforms",
       description: "Enhance your online presence and user experience with cutting-edge e-commerce platform solutions.",
-      additionalImage: "./videos/ElectricVehicles.gif",
+      additionalImage: "./videos/Ecom_gif.gif",
     },
     {
       title: "CPG",
       description: "CPG stands for consumer packaged goods. These are products that are sold to consumers and are designed to be used up or replaced regularly.",
-      additionalImage: "./videos/SmartManufacturing.gif",
+      additionalImage: "./videos/CPG_gif.gif",
     },
     {
       title: "Supply Chain Optimization",
       description: "Optimize your supply chain processes to ensure efficiency and meet the demands of the digital marketplace.",
-      additionalImage: "./videos/SmartManufacturing.gif",
+      additionalImage: "./videos/SupplyChain_gif.gif",
     },   
     // Add more grid items as required
   ];

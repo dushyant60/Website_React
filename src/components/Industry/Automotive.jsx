@@ -17,17 +17,17 @@ const Automotive = () => {
     {
       title: "Electric Vehicles",
       description: "We specialize in electric vehicles (EVs) and charging infrastructure for sustainable and eco-friendly transportation.",
-      additionalImage: "./videos/ElectricVehicles.gif",
+      additionalImage: "./videos/Elec_Vehicle_gif.gif",
     },
     {
       title: "Smart Manufacturing",
       description: "Implementing smart manufacturing processes for efficient and sustainable production in the automotive sector.",
-      additionalImage: "./videos/SmartManufacturing.gif",
+      additionalImage: "./videos/Smart_Manufacturing_gif.gif",
     },
     {
       title: "Efficient Resource Management",
       description: "Optimizing resource usage and waste reduction through sustainable practices in automotive manufacturing.",
-      additionalImage: "./videos/EfficientResourceManagement.gif",
+      additionalImage: "./videos/ERM_gif.gif",
     },
     // Add more grid items as required
   ];
