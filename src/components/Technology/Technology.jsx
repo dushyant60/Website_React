@@ -1,6 +1,6 @@
 // TechnologyPage.js
 
-import React from "react";
+import React, { useState } from "react";
 import Footer from "../Footer/Footer";
 import TextShpere from "../TechStack/TextShpere";
 import WorkProcess from "../Industry/WorkProcess/WorkProcess";
@@ -15,17 +15,27 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 
 const Technology = () => {
+  const [selectedTechnology, setSelectedTechnology] = useState(null);
+
+  const handleReadMoreClick = (index) => {
+    setSelectedTechnology(technologies[index]);
+  };
+
+  
   // Define technologies with their details
   const technologies = [
     {
       title: "Big Data and Analytics",
       description: "Harness the power of big data with advanced analytics for data-driven insights.",
       image: "./images/icon/6.png",
+      gif: "./videos/Big-Data_gif.gif",
+     
     },
     {
       title: "Machine Learning",
       description: "Explore the capabilities of machine learning for predictive analysis and automation.",
       image: "./images/icon/3.png",
+      gif: "./videos/ML_gif.gif",
     },
     {
       title: "Open AI",
@@ -86,7 +96,10 @@ const Technology = () => {
                 <div className="technology-card-content">
                   <h3>{tech.title}</h3>
                   <p>{tech.description}</p>
-                  <button className="read-more-button">
+                  <button
+                  className="read-more-button"
+                  onClick={() => handleReadMoreClick(index)}
+                >
                   Read More <FontAwesomeIcon icon={faArrowRight} />
                 </button>
                 </div>
@@ -94,6 +107,18 @@ const Technology = () => {
             ))}
           </Carousel>
         </section>
+        {selectedTechnology && (
+          <section className="additional-section"> 
+    <div className="selected-technology-content">
+      <img
+        src={selectedTechnology.gif}
+        alt={`Selected Technology GIF`}
+        className="selected-technology-gif"
+      />
+    </div>
+    </section>
+)}
+        
   
         {/* WorkProcess Section */}
         <section className="work-process-section">
