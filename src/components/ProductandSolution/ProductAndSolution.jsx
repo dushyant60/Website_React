@@ -20,7 +20,7 @@ const ProductCarousel = () => {
       title: "GLAM",
       description:
         "The product uses AIOI to provide advanced analytics, Smart Search, Q&A, Summarization, Translation, Moderation, and chat capability on unstructured data.",
-      video: "/videos/glam.mp4", // Replace with the actual video file path in public/videos folder
+      video: "/videos/GLAM.mp4", // Replace with the actual video file path in public/videos folder
     },
     {
       image: "./images/IsamLogo.png",
@@ -54,7 +54,7 @@ const ProductCarousel = () => {
 
   return (
     <div className="product-carousel">
-      <Carousel showThumbs={false} infiniteLoop autoPlay showArrows={false}>
+      <Carousel showThumbs={false} infiniteLoop autoPlay showArrows={true} interval={2000}>
         {products.map((product, index) => (
           <div key={index} className="product-slide">
             <div className="product-info">

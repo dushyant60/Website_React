@@ -7,6 +7,11 @@ import { FaTimes } from 'react-icons/fa';
 const TextShpere = () => {
   
   const [isOpen, setIsOpen] = useState(false);
+  
+  const redirectToCareerPage = () => {
+    // Set the URL of the career page
+    window.location.href = '/career'; // Replace '/career' with the actual URL of your career page
+  };
 
   // Animation settings for Text Cloud
   useEffect(() => {
@@ -41,7 +46,7 @@ const TextShpere = () => {
         "Prompt Engineering",
         "Django",
         "DBT",
-        "Microsoft Bot-Framework",
+        "Bot-Framework",
         "Bot-Emulator",
         "SQL",
         "PyTorch",
@@ -84,7 +89,10 @@ const TextShpere = () => {
       expectations. Dive into the world of possibilities with us and let's
       embark on this transformative journey together!
     </p>
-    <Popup
+
+                                                                                  {/* Form */}
+
+    {/* <Popup
   open={isOpen}
   closeOnDocumentClick
   onClose={() => setIsOpen(false)}
@@ -141,9 +149,12 @@ const TextShpere = () => {
       </form>
     </div>
   </div>
-</Popup>
+</Popup> */}
 
-<button className="contactButton_Techs" onClick={() => setIsOpen(true)}>
+                                                                                {/* Form */}
+
+
+<button className="contactButton_Techs" onClick={() => { setIsOpen(true); redirectToCareerPage(); }}>
   Join Us
 </button>
   </div>

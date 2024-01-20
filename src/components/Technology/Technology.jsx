@@ -1,6 +1,6 @@
 // TechnologyPage.js
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Footer from "../Footer/Footer";
 import TextShpere from "../TechStack/TextShpere";
 import WorkProcess from "../Industry/WorkProcess/WorkProcess";
@@ -16,9 +16,14 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const Technology = () => {
   const [selectedTechnology, setSelectedTechnology] = useState(null);
+  const additionalSectionRef = useRef(null);
 
   const handleReadMoreClick = (index) => {
     setSelectedTechnology(technologies[index]);
+    // Check if the ref is not null before calling scrollIntoView
+    if (additionalSectionRef.current) {
+      additionalSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   
@@ -35,27 +40,32 @@ const Technology = () => {
       title: "Machine Learning",
       description: "Explore the capabilities of machine learning for predictive analysis and automation.",
       image: "./images/icon/3.png",
-      gif: "./videos/ML_gif.gif",
+      gif: "./videos/ML-gif.gif",
     },
     {
       title: "Open AI",
       description: "Discover the world of artificial intelligence with OpenAI's cutting-edge technologies.",
       image: "./images/icon/openAI_illustration.png",
+      gif: "./videos/OpenAI-gif.gif",
+
     },
     {
       title: "DataBricks",
       description: "Empower your data engineering and data science workflows with Databricks.",
       image: "./images/icon/18.png",
+      gif: "./videos/DataBriks_gif.gif",
     },
     {
       title: "Business Intelligence",
       description: "Drive informed decision-making through business intelligence and analytics solutions.",
       image: "./images/icon/10.png",
+      gif: "./videos/BI_gif.gif",
     },
     {
       title: "LakeHouse/OneLake",
       description: "Build a unified data platform with Lakehouse architecture for efficient data management.",
       image: "./images/icon/7.png",
+      gif: "./videos/LakeHouse_gif.gif",
     },
   ];
 
@@ -64,7 +74,7 @@ const Technology = () => {
     autoplay: true,
     dots: true,
     infinite: true,
-    speed: 100,
+    speed: 70,
     slidesToShow: 3,
     slidesToScroll: 1,
     responsive: [
@@ -108,7 +118,7 @@ const Technology = () => {
           </Carousel>
         </section>
         {selectedTechnology && (
-          <section className="additional-section"> 
+          <section ref={additionalSectionRef} className="additional-section"> 
     <div className="selected-technology-content">
       <img
         src={selectedTechnology.gif}

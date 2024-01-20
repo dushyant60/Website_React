@@ -116,3 +116,11 @@
     width: 100%; 
   }
   
+  .slick-prev:before {
+    content: '←';
+    color: black;
+}
+.slick-next:before {
+  content: '→';
+  color: black;
+}
