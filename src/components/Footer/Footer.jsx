@@ -1,11 +1,21 @@
 import React from 'react';
 import './Footer.css'; // Import CSS file for styling
 import { SocialIcon } from 'react-social-icons'; // Import SocialIcon component from the library
+import { Link, useNavigate } from "react-router-dom";
 
 const Footer = () => {
+
+  const navigate = useNavigate();
+
+  const redirectTotermsandConditions = () => {
+    navigate("/terms");
+    window.location.reload();
+  };
+
   return (
     <footer className="footer">
       <div className='main-container-ft'>
+      <div className='container-ft'>
       <div className='details'>
         <div className="contact-info">
           <div className="company-info">
@@ -25,6 +35,16 @@ const Footer = () => {
       </div>
       <div className="location-image">
         <img src="./images/ourlocations.png" alt="map"/>
+      </div>
+      </div>
+      <div className="footer-links">
+        <div className='copyright-text'>
+        <p>© Copyright 2024. All Rights Reserved by Onelogica</p>
+        </div>
+        <div className='tandP'>
+        <Link onClick={redirectTotermsandConditions}>Terms & Conditions</Link>
+        <Link to="/privacy">Privacy</Link>
+        </div>
       </div>
       </div>
     </footer>

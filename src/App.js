@@ -16,6 +16,8 @@ import Retail from './components/Industry/Retail';
 import HealthCare from './components/Industry/HealthCare';
 import Automotive from './components/Industry/Automotive';
 import Telecommunications from './components/Industry/Telecommunication';
+import TermsAndConditionsPage from './components/Footer/Terms&Condition';
+import PrivacyPolicyPage from './components/Footer/Privacy';
 
 function App() {  
   return (
@@ -40,6 +42,8 @@ function App() {
           <Route path="/resources" element={<Resources/>} />
           <Route path="/about" element={<About/>} />
           <Route path="/career" element={<Career/>} />
+          <Route path="/terms" element={<TermsAndConditionsPage/>} />
+        <Route path="/privacy" element={<PrivacyPolicyPage/>} />
         </Routes> 
         </Router>
 
