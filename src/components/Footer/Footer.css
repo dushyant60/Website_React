@@ -253,6 +253,12 @@ flex-wrap: wrap;
   .privacyPolicy {
     padding: 15px;
   }
+  .panoramicImagetandc {
+    padding-top: 25% !important ;
+  }
+  .panoramicImageprivacy {
+    padding-top: 25% !important ;
+  }
 }
 
 .policies-section{

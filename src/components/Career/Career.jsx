@@ -2,10 +2,16 @@
 
 import React from 'react';
 import { Container, Typography, Button, Grid, Card, CardContent } from '@mui/material';
+// import { useNavigate } from "react-router-dom";
 import './Career.css'; // Import the CSS file
 import Footer from '../Footer/Footer';
 
 const Career = () => {
+  const handleExploreOpportunities = () => {
+    // Open the specified link in a new tab
+    window.open("https://onelogica.com/jobApplicationForm.html", "_blank");
+  };
+
   return (
     <div className="careerPage">
       {/* Section 1: Panoramic Image */}
@@ -46,9 +52,14 @@ const Career = () => {
                 <Typography variant="body2" color="text.secondary">
                   We offer a variety of internship opportunities designed to empower you. Imagine the impact you can have and jumpstart your career with limitless boundaries of creativity.
                 </Typography>
-                <Button variant="contained" color="primary" className="cardContent">
-                  Explore Students Opportunities
-                </Button>
+                <Button
+      variant="contained"
+      color="primary"
+      className="cardContent"
+      onClick={handleExploreOpportunities}
+    >
+      Explore Students Opportunities
+    </Button>
               </CardContent>
             </Card>
           </Grid>
@@ -68,7 +79,7 @@ const Career = () => {
                 <Typography variant="body2" color="text.secondary">
                   If you think you can, step in to explore the wealth of career opportunities and take your career to the next level.
                 </Typography>
-                <Button variant="contained" color="primary" className="cardContent">
+                <Button variant="contained" color="primary" onClick={handleExploreOpportunities} className="cardContent">
                   Explore Career Opportunities
                 </Button>
               </CardContent>

@@ -80,3 +80,9 @@
     border-top-left-radius: 4px; /* Optional: Add border-radius for top-left corner */
     border-top-right-radius: 4px; /* Optional: Add border-radius for top-right corner */
   }
+
+  @media screen and (max-width: 768px) {
+.panoramicImage{
+  padding-top: 78px !important;
+}
+  }
