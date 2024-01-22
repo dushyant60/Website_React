@@ -11,7 +11,10 @@ const Footer = () => {
     navigate("/terms");
     window.location.reload();
   };
-
+  const redirectToPrivacy = () => {
+    navigate("/privacy");
+    window.location.reload();
+  };
   return (
     <footer className="footer">
       <div className='main-container-ft'>
@@ -43,7 +46,7 @@ const Footer = () => {
         </div>
         <div className='tandP'>
         <Link onClick={redirectTotermsandConditions}>Terms & Conditions</Link>
-        <Link to="/privacy">Privacy</Link>
+        <Link onClick={redirectToPrivacy}>Privacy</Link>
         </div>
       </div>
       </div>
