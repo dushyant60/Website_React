@@ -7,17 +7,20 @@ import "slick-carousel/slick/slick-theme.css";
 import Footer from "../Footer/Footer";
 import TextShpere from "../TechStack/TextShpere";
 import "./HomePage.css";
-import IntroModal from "./IntroModal";
+// import IntroModal from "./IntroModal";
 
 const HomePage = () => {
   
   const navigate = useNavigate();
-  const [isModalOpen, setIsModalOpen] = useState(true);
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-  const introVideoSrc = "./videos/Ram Mandir.mp4"; 
+   //[ Ram Mandir Video ]
+
+  // const [isModalOpen, setIsModalOpen] = useState(true);
+
+  // const closeModal = () => {
+  //   setIsModalOpen(false);
+  // };
+  // const introVideoSrc = "./videos/Ram Mandir.mp4"; 
 
   const products = [
     {
@@ -85,7 +88,7 @@ const HomePage = () => {
   
   return (
     <div class="homepage">
-      <IntroModal isOpen={isModalOpen} closeModal={closeModal} videoSrc={introVideoSrc} />
+      {/* <IntroModal isOpen={isModalOpen} closeModal={closeModal} videoSrc={introVideoSrc} /> */}
       <div class="intro-section">
         <div class="intro-video">
           <video
@@ -158,8 +161,8 @@ const HomePage = () => {
                 textDecoration: 'none', // Remove underline
                 fontSize: '16px',
               }}>
-          Products
-        </Link>
+            Products
+            </Link>
             </div>
           </div>
           <div className="image-container">
