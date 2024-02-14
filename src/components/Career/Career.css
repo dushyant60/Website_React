@@ -10,6 +10,12 @@
     text-align: center;
     padding: 10% 0;
   }
+  .panoramicImage-interns{
+    background: url(/public/images/InternBG_img.jpg) center/cover no-repeat;
+    color: #fff;
+    text-align: center;
+    padding: 10% 0;
+  }
   
   .career-container{
     background-image: url(/public/images/BG_3.jpg);

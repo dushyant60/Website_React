@@ -18,6 +18,10 @@ import Automotive from './components/Industry/Automotive';
 import Telecommunications from './components/Industry/Telecommunication';
 import TermsAndConditionsPage from './components/Footer/Terms&Condition';
 import PrivacyPolicyPage from './components/Footer/Privacy';
+import InternsPage  from './components/Career/InternsPage';
+import FullTimePage from './components/Career/FullTime';
+import RoleDetails from './components/Career/RoleDetails';
+
 
 function App() {  
   return (
@@ -44,6 +48,9 @@ function App() {
           <Route path="/career" element={<Career/>} />
           <Route path="/terms" element={<TermsAndConditionsPage/>} />
         <Route path="/privacy" element={<PrivacyPolicyPage/>} />
+        <Route path="/internspage" element={<InternsPage/>} />
+        <Route path="/fulltimepage" element={<FullTimePage/>} />
+        <Route path = "/roledetails" element={<RoleDetails/>} />
         </Routes> 
         </Router>
 

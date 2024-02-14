@@ -37,7 +37,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="location-image">
-        <img src="./images/ourlocations.png" alt="map"/>
+        <img src="./images/mapsLocation.png" alt="map"/>
       </div>
       </div>
       <div className="footer-links">
