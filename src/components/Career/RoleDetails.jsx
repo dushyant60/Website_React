@@ -6,7 +6,7 @@ const RoleDetails= () => {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    axios.get('https://isam.onelogica.com/api/jobforms/')
+    axios.get('http://20.244.24.5:8000/api/jobforms/')
       .then(response => setJobs(response.data))
       .catch(error => console.error('Error fetching data:', error));
   }, []);
