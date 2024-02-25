@@ -32,40 +32,40 @@ const Technology = () => {
     {
       title: "Big Data and Analytics",
       description: "Harness the power of big data with advanced analytics for data-driven insights.",
-      image: "./images/icon/6.png",
-      gif: "./videos/Big-Data_gif.gif",
+      image: "../images/icon/6.png",
+      gif: "../videos/Big-Data_gif.gif",
      
     },
     {
       title: "Machine Learning",
       description: "Explore the capabilities of machine learning for predictive analysis and automation.",
-      image: "./images/icon/3.png",
-      gif: "./videos/ML-gif.gif",
+      image: "../images/icon/3.png",
+      gif: "../videos/ML-gif.gif",
     },
     {
       title: "Open AI",
       description: "Discover the world of artificial intelligence with OpenAI's cutting-edge technologies.",
-      image: "./images/icon/openAI_illustration.png",
-      gif: "./videos/OpenAI-gif.gif",
+      image: "../images/icon/openAI_illustration.png",
+      gif: "../videos/OpenAI-gif.gif",
 
     },
     {
       title: "DataBricks",
       description: "Empower your data engineering and data science workflows with Databricks.",
-      image: "./images/icon/18.png",
-      gif: "./videos/DataBriks_gif.gif",
+      image: "../images/icon/18.png",
+      gif: "../videos/DataBriks_gif.gif",
     },
     {
       title: "Business Intelligence",
       description: "Drive informed decision-making through business intelligence and analytics solutions.",
-      image: "./images/icon/10.png",
-      gif: "./videos/BI_gif.gif",
+      image: "../images/icon/10.png",
+      gif: "../videos/BI_gif.gif",
     },
     {
       title: "LakeHouse/OneLake",
       description: "Build a unified data platform with Lakehouse architecture for efficient data management.",
-      image: "./images/icon/7.png",
-      gif: "./videos/LakeHouse_gif.gif",
+      image: "../images/icon/7.png",
+      gif: "../videos/LakeHouse_gif.gif",
     },
   ];
 

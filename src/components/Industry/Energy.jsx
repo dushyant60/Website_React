@@ -11,26 +11,26 @@ const EnergyPage = () => {
   const backgroundImage = "./images/energy.jpg";
   const sectionImage = "./images/Energy_P_img.jpeg";
   const carouselImages = [
-    "./images/RenewableEnergyImage.jpeg",
-    "./images/WaterImage.jpeg",
-    "./images/WasteImage.jpeg",
+    "../images/RenewableEnergyImage.jpeg",
+    "../images/WaterImage.jpeg",
+    "../images/WasteImage.jpeg",
   ];
 
   const gridItems = [
     {
       title: "Renewable Energy",
       description: "We specialize in harnessing the power of renewable sources such as solar and wind for sustainable energy production.",
-      additionalImage: "./videos/Reneable_Gif.gif",
+      additionalImage: "../videos/Reneable_Gif.gif",
     },
     {
       title: "Water",
       description: "Optimize water usage, reduce water consumption through a sustainable approach.",
-      additionalImage: "./videos/Water_gif.gif",
+      additionalImage: "../videos/Water_gif.gif",
     },
     {
       title: "Waste",
       description: "Sustainable strategies, resilience , reduce carbon emmissions.",
-      additionalImage: "./videos/Waste_gif.gif",
+      additionalImage: "../videos/Waste_gif.gif",
     },
     // Add more grid items as required
   ];

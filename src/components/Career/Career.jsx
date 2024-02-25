@@ -21,30 +21,30 @@ const Career = () => {
 
   const employeeData = [
     {
-      icon: "./images/tab_header_img.png",
+      icon: "../images/tab_header_img.png",
       name: "Anshu, Full Stack Developer",
-      picture: "./images/profile_img.jpg",
+      picture: "../images/profile_img.jpg",
       reviews:
         '"At Onelogica, I have thrived as a full stack developer, benefitting from a dynamic and innovative environment. The organizations commitment to cutting-edge technologies, collaborative culture, and supportive leadership has made my experience highly positive. With promising prospects for career growth, Onelogica stands out as a rewarding workplace"',
     },
     {
-      icon: "./images/tab_header_img.png",
+      icon: "../images/tab_header_img.png",
       name: "Prachi, Lead BI Architect",
-      picture: "./images/profile_img.jpg",
+      picture: "../images/profile_img.jpg",
       reviews:
         '"We feel very empowered with the right fix of the team involved in the work. For us work is just fun as we enjoy working at Onelogica. Remote working is more fun the way onelogica has crafted."',
     },
     {
-      icon: "./images/tab_header_img.png",
+      icon: "../images/tab_header_img.png",
       name: "Vanshika, Data Analyst",
-      picture: "./images/profile_img.jpg",
+      picture: "../images/profile_img.jpg",
       reviews:
         '"I joined as a fresher and within a short span of time got ample opportunities to work on different tools and technology. Only performance matters at onelogica and I am getting all recognition and rewards. "',
     },
     {
-      icon: "./images/tab_header_img.png",
+      icon: "../images/tab_header_img.png",
       name: "Ankit, Lead Data Scientist",
-      picture: "./images/Ankit-Profile-img.jpg",
+      picture: "../images/Ankit-Profile-img.jpg",
       reviews:
         '"Onelogicas unique approach to the R & D driven work environment keeps me challenged every day and enables us to provide our customer withthe best of the delivery. "',
     },
@@ -82,7 +82,7 @@ const Career = () => {
             <Card className="careerCard">
               <img
                 className="Card-img"
-                src="./images/STudents_Img.jpg"
+                src="../images/STudents_Img.jpg"
                 alt="Student Career"
               />
               <CardContent>
@@ -108,7 +108,7 @@ const Career = () => {
             <Card className="careerCard">
               <img
                 className="Card-img"
-                src="./images/Experiene_Career.jpg"
+                src="../images/Experiene_Career.jpg"
                 alt="Experience Career"
               />
               <CardContent>
@@ -144,7 +144,7 @@ const Career = () => {
             <CardMedia
                 component="img"
                 height="340"
-                image="./images/shapeYourCareer_Img.jpg" // Replace with your image path
+                image="../images/shapeYourCareer_Img.jpg" // Replace with your image path
                 alt="Shape your Career"
               />
               <CardContent>
@@ -164,7 +164,7 @@ const Career = () => {
             <CardMedia
                 component="img"
                 height="340"
-                image="./images/learnAndGrow_img.jpg" // Replace with your image path
+                image="../images/learnAndGrow_img.jpg" // Replace with your image path
                 alt="Shape your Career"
               />
               <CardContent>
@@ -184,7 +184,7 @@ const Career = () => {
             <CardMedia
                 component="img"
                 height="340"
-                image="./images/keepCurrent_img.jpg" // Replace with your image path
+                image="../images/keepCurrent_img.jpg" // Replace with your image path
                 alt="Shape your Career"
               />
               <CardContent>
@@ -204,7 +204,7 @@ const Career = () => {
             <CardMedia
                 component="img"
                 height="340"
-                image="./images/giveBack_img.jpg" // Replace with your image path
+                image="../images/giveBack_img.jpg" // Replace with your image path
                 alt="Shape your Career"
               />
               <CardContent>
@@ -224,7 +224,7 @@ const Career = () => {
             <CardMedia
                 component="img"
                 height="340"
-                image="./images/stayHealthy_img.jpg" // Replace with your image path
+                image="../images/stayHealthy_img.jpg" // Replace with your image path
                 alt="Shape your Career"
               />
               <CardContent>
@@ -244,7 +244,7 @@ const Career = () => {
             <CardMedia
                 component="img"
                 height="340"
-                image="./images/investInYourself_Img.jpg" // Replace with your image path
+                image="../images/investInYourself_Img.jpg" // Replace with your image path
                 alt="Shape your Career"
               />
               <CardContent>
@@ -281,7 +281,7 @@ const Career = () => {
         <div className="image-container-hiring">
           <img
             className="hiringImg"
-            src="./images/hiring-img.jpg"
+            src="../images/hiring-img.jpg"
             alt="hiring-Image"
           />
         </div>

@@ -22,7 +22,7 @@ const Footer = () => {
       <div className='details'>
         <div className="contact-info">
           <div className="company-info">
-            <img src='./images/logo1.png' alt="Company Logo" className="company-logo" />  
+            <img src='../images/logo1.png' alt="Company Logo" className="company-logo" />  
             <h3>Contact-Info</h3>
             <p>Hope Tower, 18th Floor, Unit No. TS-1926, Plot No. C-03, Sec-04, Galaxy Blue Sapphire Mall, Greater Noida 201309 </p>
             <p>Email: sales@onelogica.com</p>
@@ -37,7 +37,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="location-image">
-        <img src="./images/mapsLocation.png" alt="map"/>
+        <img src="../images/mapsLocation.png" alt="map"/>
       </div>
       </div>
       <div className="footer-links">

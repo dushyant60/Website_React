@@ -1,27 +1,77 @@
-import React from 'react';
-import { useForm, Controller } from 'react-hook-form';
-import { TextField, Button, Container, Grid, Select, MenuItem, FormControl, InputLabel, FormControlLabel, Checkbox } from '@mui/material';
+import React, { useState } from "react";
+import { useForm, Controller } from "react-hook-form";
+import { useLocation } from "react-router-dom";
+import {
+  TextField,
+  Button,
+  Container,
+  Grid,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  FormControlLabel,
+  Checkbox,
+} from "@mui/material";
+import Footer from "../Footer/Footer";
+import TextShpere from "../TechStack/TextShpere";
 
-const JobApplicationForm = () => {
-  const { control, handleSubmit, formState: { errors } } = useForm();
+const DynamicApplicationForm = () => {
+  const {
+    control,
+    formState: { errors },
+  } = useForm();
+  const location = useLocation();
+  const { job } = location.state || {};
 
-  const onSubmit = (data) => {
-    console.log('Form submitted:', data);
-    // You can add additional logic here to handle the form submission
+  // State to manage form input values
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    // Add more fields as needed
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Perform form submission logic here
+    console.log("Form submitted with data:", formData);
+    // You can redirect or perform other actions after form submission
+  };
+
+  if (!job) {
+    // Handle the case when job details are not available
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div>
-      <Container maxWidth='md'>
-        <h2>Job Application Form</h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Grid container spacing={2}>
-            <Grid item xs={6}>
+    <div
+      style={{
+        backgroundImage: 'url("../images/BG_2.jpg")',
+        backgroundSize: "cover",
+        backgroundPosition: "centre",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <Container maxWidth="md" style={{ padding: "90px 40px 50px 40px" }}>
+      <h2 style={{ color: "#101c3d" }}>
+  Job Application Form: <span style={{ color: "Red" }}>{job.position}</span>
+</h2>
+        <form onSubmit={handleSubmit}>
+          <Grid container spacing={1}>
+            <Grid item xs={12} md={6}>
               <Controller
                 name="fullName"
                 control={control}
                 defaultValue=""
-                rules={{ required: 'Full Name is required' }}
+                rules={{ required: "Full Name is required" }}
                 render={({ field }) => (
                   <TextField
                     {...field}
@@ -36,16 +86,16 @@ const JobApplicationForm = () => {
                 )}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} md={6}>
               <Controller
                 name="email"
                 control={control}
                 defaultValue=""
                 rules={{
-                  required: 'Email is required',
+                  required: "Email is required",
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                    message: 'Invalid email address',
+                    message: "Invalid email address",
                   },
                 }}
                 render={({ field }) => (
@@ -62,16 +112,16 @@ const JobApplicationForm = () => {
                 )}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} md={6}>
               <Controller
                 name="phoneNumber"
                 control={control}
                 defaultValue=""
                 rules={{
-                  required: 'Phone Number is required',
+                  required: "Phone Number is required",
                   pattern: {
                     value: /^\d{10}$/,
-                    message: 'Invalid phone number',
+                    message: "Invalid phone number",
                   },
                 }}
                 render={({ field }) => (
@@ -88,57 +138,45 @@ const JobApplicationForm = () => {
                 )}
               />
             </Grid>
-            <Grid item xs={6}>
-              <FormControl fullWidth variant="outlined" margin="normal">
-                <InputLabel id="position-label">Internship Position</InputLabel>
+            <Grid item xs={12} md={6}>
                 <Controller
-                  name="internshipPosition"
+                  name="Position"
                   control={control}
-                  defaultValue=""
-                  rules={{ required: 'Internship Position is required' }}
+                  defaultValue={job.position} // Set the defaultValue to job.position
+                  rules={{ required: "Applied Position is required" }}
                   render={({ field }) => (
-                    <Select
-                      {...field}
-                      label="Internship Position"
-                      labelId="position-label"
-                      error={!!errors.internshipPosition}
-                    >
-                      <MenuItem value="softwareDeveloper">Software Developer</MenuItem>
-                      <MenuItem value="dataAnalyst">Data Analyst</MenuItem>
-                      <MenuItem value="uxDesigner">UX Designer</MenuItem>
-                      {/* Add more positions as needed */}
-                    </Select>
-                  )}
+                    <TextField
+                    {...field}
+                    label="Position"
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                     InputProps={{
+          readOnly: true, // Make the TextField non-editable
+        }}
+                  />
+                )}
                 />
-              </FormControl>
             </Grid>
-            <Grid item xs={6}>
-              <FormControl fullWidth variant="outlined" margin="normal">
-                <InputLabel id="skills-label">Skills</InputLabel>
+            <Grid item xs={12} md={6}>
                 <Controller
                   name="skills"
                   control={control}
-                  defaultValue={[]}
-                  rules={{ required: 'Skills are required' }}
+                  defaultValue={[job.skills]}
+                  rules={{ required: "Skills are required" }}
                   render={({ field }) => (
-                    <Select
-                      {...field}
-                      label="Skills"
-                      labelId="skills-label"
-                      multiple
-                      error={!!errors.skills}
-                    >
-                      <MenuItem value="react">React</MenuItem>
-                      <MenuItem value="node">Node.js</MenuItem>
-                      <MenuItem value="python">Python</MenuItem>
-                      {/* Add more skills as needed */}
-                    </Select>
-                  )}
+                    <TextField
+                    {...field}
+                    label="Skills"
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                  />
+                )}
                 />
-              </FormControl>
             </Grid>
             {/* <Grid item xs={6}> */}
-              {/* <FormControlLabel
+            {/* <FormControlLabel
                 // control={
                 //   <Checkbox
                 //     {...control.getValues('azureExperience')}
@@ -149,7 +187,7 @@ const JobApplicationForm = () => {
               /> */}
             {/* </Grid> */}
             {/* <Grid item xs={6}> */}
-              {/* <FormControlLabel
+            {/* <FormControlLabel
                 control={
                   <Checkbox
                     // {...control.getValues('azureCertified')}
@@ -159,122 +197,72 @@ const JobApplicationForm = () => {
                 label="Are you Azure certified?"
               /> */}
             {/* </Grid>  */}
-            <Grid item xs={6}>
-                <Controller
-                  name="certification"
-                  control={control}
-                  defaultValue=""
-                  render={({ field }) => (
-                    <TextField
-                      {...field}
-                      label="Certification"
-                      variant="outlined"
-                      margin="normal"
-                      fullWidth
-                    />
-                  )}
-                />
-              
+            <Grid item xs={12} md={6}>
+              <Controller
+                name="experience"
+                control={control}
+                defaultValue={[job.experience]}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    label="Experience"
+                    variant="outlined"
+                    margin="normal"
+                    fullWidth
+                  />
+                )}
+              />
             </Grid>
 
-            <Grid item xs={6}>
-              <FormControl fullWidth variant="outlined" margin="normal">
-                <InputLabel id="fullStack-label">Applying for Full Stack?</InputLabel>
-                <Controller
-                  name="fullStack"
-                  control={control}
-                  defaultValue=""
-                  render={({ field }) => (
-                    <Select {...field} label="Applying for Full Stack?" labelId="fullStack-label">
-                      <MenuItem value="yes">Yes</MenuItem>
-                      <MenuItem value="no">No</MenuItem>
-                    </Select>
-                  )}
-                />
-              </FormControl>
+            <Grid item  md={12} xs= {12}>
+              <Controller
+                name="workExperience"
+                control={control}
+                defaultValue=""
+                rules={{ required: "Cover Letter is required" }}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    label="Work Experiece"
+                    variant="outlined"
+                    margin="normal"
+                    multiline
+                    rows={4}
+                    // error={!!errors.coverLetter}
+                    // helperText={errors.coverLetter?.message}
+                    // required
+                    fullWidth
+                  />
+                )}
+              />
             </Grid>
 
-            <Grid item xs={6}>
-              <FormControl fullWidth variant="outlined" margin="normal">
-                <InputLabel id="skills-label">General Skills</InputLabel>
-                <Controller
-                  name="generalSkills"
-                  control={control}
-                  defaultValue={[]}
-                  rules={{ required: 'Skills are required' }}
-                  render={({ field }) => (
-                    <Select {...field} label="General Skills" labelId="skills-label" multiple>
-                      <MenuItem value="react">React</MenuItem>
-                      <MenuItem value="angular">Angular</MenuItem>
-                      <MenuItem value="node">Node.js</MenuItem>
-                      {/* Add more skills as needed */}
-                    </Select>
-                  )}
-                />
-              </FormControl>
+            <Grid item xs={12} md={6}>
+              <Controller
+                name="Socials"
+                control={control}
+                defaultValue=""
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    label="Socials"
+                    variant="outlined"
+                    margin="normal"
+                    error={!!errors.resume}
+                    helperText={errors.resume?.message}
+                    required
+                    fullWidth
+                  />
+                )}
+              />
             </Grid>
 
-            <Grid item xs={6}>
-              <FormControl fullWidth variant="outlined" margin="normal">
-                <InputLabel id="databases-label">Databases Worked With</InputLabel>
-                <Controller
-                  name="databases"
-                  control={control}
-                  defaultValue=""
-                  render={({ field }) => (
-                    <Select {...field} label="Databases Worked With" labelId="databases-label">
-                      <MenuItem value="mysql">MySQL</MenuItem>
-                      <MenuItem value="mongodb">MongoDB</MenuItem>
-                      <MenuItem value="postgresql">PostgreSQL</MenuItem>
-                      {/* Add more database options as needed */}
-                    </Select>
-                  )}
-                />
-              </FormControl>
-            </Grid>
-
-            <Grid item xs={6}>
-              <FormControl fullWidth variant="outlined" margin="normal">
-                <InputLabel id="roleSkills-label">Role-Specific Skills</InputLabel>
-                <Controller
-                  name="roleSkills"
-                  control={control}
-                  defaultValue={[]}
-                  rules={{ required: 'Skills are required' }}
-                  render={({ field }) => (
-                    <Select {...field} label="Role-Specific Skills" labelId="roleSkills-label" multiple>
-                      <MenuItem value="uiUxDesign">UI/UX Design</MenuItem>
-                      <MenuItem value="digitalMarketing">Digital Marketing</MenuItem>
-                      {/* Add more role-specific skills as needed */}
-                    </Select>
-                  )}
-                />
-              </FormControl>
-            </Grid>
-            <Grid item xs={12}>
-                <Controller
-                  name="techPassion"
-                  control={control}
-                  defaultValue=""
-                  render={({ field }) => (
-                    <TextField
-                      {...field}
-                      label="Tech Passion"
-                      variant="outlined"
-                      margin="normal"
-                      fullWidth
-                    />
-                  )}
-                />
-              
-            </Grid>
-
-            <Grid item xs={12}>
+            <Grid item xs={12} md={6}>
               <Controller
                 name="resume"
                 control={control}
                 defaultValue=""
-                rules={{ required: 'Resume Link is required' }}
+                rules={{ required: "Resume Link is required" }}
                 render={({ field }) => (
                   <TextField
                     {...field}
@@ -289,12 +277,12 @@ const JobApplicationForm = () => {
                 )}
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item  md={12} xs= {12}>
               <Controller
                 name="coverLetter"
                 control={control}
                 defaultValue=""
-                rules={{ required: 'Cover Letter is required' }}
+                rules={{ required: "Cover Letter is required" }}
                 render={({ field }) => (
                   <TextField
                     {...field}
@@ -311,7 +299,7 @@ const JobApplicationForm = () => {
                 )}
               />
             </Grid>
-            
+
             <Grid item xs={12}>
               <Button type="submit" variant="contained" color="primary">
                 Submit Application
@@ -320,8 +308,14 @@ const JobApplicationForm = () => {
           </Grid>
         </form>
       </Container>
+
+      <TextShpere />
+
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 };
 
-export default JobApplicationForm;
+export default DynamicApplicationForm;

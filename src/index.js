@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import JobApplicationForm from './components/Career/ApplyJobForm';
+// import JobApplicationForm from './components/Career/ApplyJobForm';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
-    <JobApplicationForm/>
+    <App />
+    {/* <JobApplicationForm/> */}
   </React.StrictMode>
 );
 

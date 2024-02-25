@@ -3,13 +3,7 @@
 
 import React from "react";
 import {
-  Container,
   Typography,
-  Button,
-  Grid,
-  Card,
-  CardContent,
-  CardMedia,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
@@ -35,7 +29,7 @@ const FullTimePage = () => {
         <div className="image-container-hiring">
           <img
             className="hiringImg"
-            src="./images/fullTime_Img.jpg"
+            src="../images/fullTime_Img.jpg"
             alt="hiring-Image"
           />
         </div>
@@ -69,7 +63,7 @@ const FullTimePage = () => {
             target="_blank"
           >
             <img
-              src="./images/linkedin.png" // Replace with the correct path to the LinkedIn logo
+              src="../images/linkedin.png" // Replace with the correct path to the LinkedIn logo
               alt="LinkedIn Logo"
               style={{ marginLeft: "-1%", width: "14%" }} // Adjust the spacing as needed
             />
@@ -77,52 +71,6 @@ const FullTimePage = () => {
         </div>
       </div>
 
-      {/* Section 2: Ready to Change the World */}
-      <Container className="career-container">
-        {/* Section 3: Cards for Different Audiences */}
-        <Grid container spacing={3} className="cardContainer">
-          {/* Card 1: Students and Recent Graduates */}
-          <Grid item xs={12} md={6}>
-            <Card className="careerCard">
-              <img
-                className="Card-img"
-                src="./images/worldClassMentors_Img.jpg"
-                alt="Student Career"
-              />
-              <CardContent>
-                <Typography variant="h5" component="div" gutterBottom>
-                  World Class Mentors
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  We offer a variety of internship opportunities designed to
-                  empower you. Imagine the impact you can have and jumpstart
-                  your career with limitless boundaries of creativity.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-
-          {/* Card 2: Experienced Professionals */}
-          <Grid item xs={12} md={6}>
-            <Card className="careerCard">
-              <img
-                className="Card-img"
-                src="./images/realTimeProjects_img.jpg"
-                alt="Experience Career"
-              />
-              <CardContent>
-                <Typography variant="h5" component="div" gutterBottom>
-                  Real-Time Projects
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  If you think you can, step in to explore the wealth of career
-                  opportunities and take your career to the next level.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
-      </Container>
       <JobList />
 
       <footer>

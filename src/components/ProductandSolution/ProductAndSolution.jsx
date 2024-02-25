@@ -16,25 +16,25 @@ const ProductCarousel = () => {
 
   const products = [
     {
-      image: "./images/GlamLogo.jpg",
+      image: "../images/GlamLogo.jpg",
       title: "GLAM",
       description:
         "The product uses AIOI to provide advanced analytics, Smart Search, Q&A, Summarization, Translation, Moderation, and chat capability on unstructured data.",
-      video: "/videos/GLAM.mp4", // Replace with the actual video file path in public/videos folder
+      video: "../videos/GLAM.mp4", // Replace with the actual video file path in public/videos folder
     },
     {
-      image: "./images/IsamLogo.png",
+      image: "../images/IsamLogo.png",
       title: "iSAM",
       description:
         "Intelligent startup administration & Management Web App built on cognitive AI foundations is targeted to help startup manage their business optimally.",
-      video: "/videos/iSam (1).mp4", // Replace with the actual video file path in public/videos folder
+      video: "../videos/iSam.mp4", // Replace with the actual video file path in public/videos folder
     },
     {
-      image: "./images/EASLogo.png",
+      image: "../images/EASLogo.png",
       title: "EAS",
       description:
         "EAS helps us in gaining insights into their business from every functional aspect of the organization. EAS is plug and play solution which provides and can be tailored to our customers' needs.",
-      video: "/videos/EAS (1).mp4", // Replace with the actual video file path in public/videos folder
+      video: "../videos/EAS.mp4", // Replace with the actual video file path in public/videos folder
     },
     // Add more products with image paths, titles, descriptions, and video file paths
   ];
@@ -112,17 +112,17 @@ const CustomCard = ({ image, title, description }) => {
 const ProductAndSolution = () => {
   const cardData = [
     {
-      image: "./images/Databases.png",
+      image: "../images/Databases.png",
       title: "Databases",
       description: "Managing your all database migration over cloud.",
     },
     {
-      image: "./images/Datawarehouse.png",
+      image: "../images/Datawarehouse.png",
       title: "Data Warehouse",
       description: "Effective & Optimized solutions for future ready Datawarehouse.",
     },
     {
-      image: "./images/BigData.png",
+      image: "../images/BigData.png",
       title: "Big Data Platforms",
       description: "Transform your organization's data into actionable insights with cloud native powerful and scalable big data platforms.",
     },
@@ -155,7 +155,7 @@ const ProductAndSolution = () => {
       </div>
       <div className="wwd-section">
       <div className="wwd-img-section">
-        <img className="wwd-img" src="./images/WWD_3.png" alt="What we do" />
+        <img className="wwd-img" src="../images/WWD_3.png" alt="What we do" />
        </div>
        </div>
 

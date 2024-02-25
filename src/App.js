@@ -21,6 +21,8 @@ import PrivacyPolicyPage from './components/Footer/Privacy';
 import InternsPage  from './components/Career/InternsPage';
 import FullTimePage from './components/Career/FullTime';
 import RoleDetails from './components/Career/RoleDetails';
+import JobApplicationForm from './components/Career/ApplyJobForm';
+import DynamicApplicationForm from './components/Career/ApplyJobForm';
 
 
 function App() {  
@@ -51,6 +53,7 @@ function App() {
         <Route path="/internspage" element={<InternsPage/>} />
         <Route path="/fulltimepage" element={<FullTimePage/>} />
         <Route path = "/roledetails" element={<RoleDetails/>} />
+        <Route path="/applyjobform/:jobId" element={<DynamicApplicationForm/>} />
         </Routes> 
         </Router>
 

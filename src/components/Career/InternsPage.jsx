@@ -58,7 +58,7 @@ const InternsPage = () => {
           target="_blank"
         >
           <img
-            src="./images/linkedin.png"  // Replace with the correct path to the LinkedIn logo
+            src="../images/linkedin.png"  // Replace with the correct path to the LinkedIn logo
             alt="LinkedIn Logo"
             style={{ marginLeft: '-1%', width: "17%" }}  // Adjust the spacing as needed
           />
@@ -68,7 +68,7 @@ const InternsPage = () => {
         <div className="image-container-hiring">
           <img
             className="hiringImg"
-            src="./images/internsCareer_img.jpg"
+            src="../images/internsCareer_img.jpg"
             alt="hiring-Image"
           />
         </div>
@@ -83,7 +83,7 @@ const InternsPage = () => {
             <Card className="careerCard">
               <img
                 className="Card-img"
-                src="./images/worldClassMentors_Img.jpg"
+                src="../images/worldClassMentors_Img.jpg"
                 alt="Student Career"
               />
               <CardContent>
@@ -104,7 +104,7 @@ const InternsPage = () => {
             <Card className="careerCard">
               <img
                 className="Card-img"
-                src="./images/realTimeProjects_img.jpg"
+                src="../images/realTimeProjects_img.jpg"
                 alt="Experience Career"
               />
               <CardContent>
@@ -122,9 +122,9 @@ const InternsPage = () => {
       </Container>
       <JobList/>
 
-      <div className="jobPostings">
+      {/* <div className="jobPostings">
       <RoleDetails/>
-      </div>
+      </div> */}
 
 
 

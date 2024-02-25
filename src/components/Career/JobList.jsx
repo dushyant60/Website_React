@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -9,43 +9,67 @@ import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import {useNavigate } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const cardsPerPage = 3;
-
-// TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function Album() {
-  const [visibleCards, setVisibleCards] = React.useState(cardsPerPage);
+const JobList = () => {
+  const [jobs, setJobs] = useState([]);
+  const [visibleJobs, setVisibleJobs] = useState(3);
+  const [selectedCategory, setSelectedCategory] = useState('internships');
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://isam.onelogica.com/api/jobforms/');
+        const data = await response.json();
+        setJobs(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleShowMore = () => {
-    setVisibleCards((prevVisibleCards) => prevVisibleCards + cardsPerPage);
+    setVisibleJobs((prevVisibleJobs) => prevVisibleJobs + 3);
   };
 
-  return (
+  const filterJobs = () => {
+    if (selectedCategory === 'internships') {
+      return jobs.filter((job) => job.position.toLowerCase() === 'intern').slice(0, visibleJobs);
+    } else {
+      return jobs.filter((job) => job.position.toLowerCase() !== 'intern').slice(0, visibleJobs);
+    }
+  };
 
-     <ThemeProvider theme={defaultTheme}>
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+  };
+
+  const handleApplyClick = (job) => {
+    navigate(`/applyjobform/${job.id}`, { state: { job } });
+    // window.location.reload(); 
+    window.scrollTo(0, 0);
+  }
+
+  return (
+    <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
       <Box
         sx={{
-          backgroundImage: 'url(./images/BG_2.jpg)', // Replace with your image URL
+          backgroundImage: 'url(../images/BG_2.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          padding:'2% 0',
-          // // minHeight: '100vh',
-          // display: 'flex',
-          // flexDirection: 'column',
+          padding: '2% 0',
         }}
       >
         <main>
-          <Box
-            sx={{
-              pt: 3,
-              pb: 6,
-            }}
-          >
+          <Box sx={{ pt: 3, pb: 6 }}>
             <Container maxWidth="sm">
               <Typography
                 component="h1"
@@ -56,42 +80,70 @@ export default function Album() {
               >
                 Open Positions
               </Typography>
-              <Stack
-                sx={{ pt: 2 }}
-                direction="row"
-                spacing={2}
-                justifyContent="center"
-              >
-                <Button variant="contained">Internships</Button>
-                <Button variant="outlined">Full-Time</Button>
+              <Stack sx={{ pt: 2 }} direction="row" spacing={2} justifyContent="center">
+                <Button
+                  variant={selectedCategory === 'internships' ? 'contained' : 'outlined'}
+                  onClick={() => handleCategoryChange('internships')}
+                >
+                  Internships
+                </Button>
+                <Button
+                  variant={selectedCategory === 'fullTime' ? 'contained' : 'outlined'}
+                  onClick={() => handleCategoryChange('fullTime')}
+                >
+                  Full-Time
+                </Button>
               </Stack>
             </Container>
           </Box>
 
           <Container sx={{ py: 2 }} maxWidth="lg">
             <Grid container spacing={2}>
-              {cards.slice(0, visibleCards).map((card) => (
-                <Grid item key={card} xs={12} sm={4} md={4}>
+              {filterJobs().map((job) => (
+                <Grid item key={job.id} xs={12} sm={4} md={4}>
                   <Card
-                    sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                    sx={{
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      padding:"3%",
+                    }}
                   >
                     <CardContent sx={{ flexGrow: 1 }}>
                       <Typography gutterBottom variant="h5" component="h2">
-                        Heading
+                        {job.position}
                       </Typography>
-                      <Typography>
-                        This is a media card. You can use this section to describe the
-                        content.
+                      <Typography
+                        gutterBottom
+                        variant="subtitle1"
+                        component="div"
+                        sx={{
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          display: '-webkit-box',
+                          WebkitLineClamp: 3,
+                          WebkitBoxOrient: 'vertical',
+                        }}
+                      >
+                        {job.description}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        Experience: {job.experience}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        Skills: {job.skills}
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <Button size="small">Apply</Button>
-                    </CardActions>
+                    <Button size="small" onClick={() => handleApplyClick(job)}>
+              Apply
+            </Button>
+          </CardActions>
                   </Card>
                 </Grid>
               ))}
             </Grid>
-            {visibleCards < cards.length && (
+            {visibleJobs < jobs.length && (
               <Button variant="outlined" onClick={handleShowMore} sx={{ mt: 2 }}>
                 Show More
               </Button>
@@ -101,4 +153,6 @@ export default function Album() {
       </Box>
     </ThemeProvider>
   );
-}
+};
+
+export default JobList;

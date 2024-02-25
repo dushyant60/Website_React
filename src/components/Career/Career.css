@@ -164,3 +164,21 @@
       text-align: center;
     }
   }
+
+
+
+  /* JobLIst */
+
+  #testbutton {
+    width: 100px; /* Adjusted width */
+    height: 40px; /* Adjusted height */
+    border-radius: 50px; /* Adjusted border-radius */
+    position: relative;
+    left: calc(50% - 50px);
+    top: calc(50% - 20px);
+    background: linear-gradient(45deg, #3498db, #2980b9); /* Blue gradient */
+    cursor: pointer;
+    line-height: 12px;
+}
+
+
