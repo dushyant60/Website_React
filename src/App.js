@@ -21,7 +21,6 @@ import PrivacyPolicyPage from './components/Footer/Privacy';
 import InternsPage  from './components/Career/InternsPage';
 import FullTimePage from './components/Career/FullTime';
 import RoleDetails from './components/Career/RoleDetails';
-import JobApplicationForm from './components/Career/ApplyJobForm';
 import DynamicApplicationForm from './components/Career/ApplyJobForm';
 
 

@@ -24,7 +24,7 @@ const JobList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://isam.onelogica.com/api/jobforms/');
+        const response = await fetch('http://20.244.24.5:8000/api/jobforms/');
         const data = await response.json();
         setJobs(data);
       } catch (error) {
@@ -41,9 +41,9 @@ const JobList = () => {
 
   const filterJobs = () => {
     if (selectedCategory === 'internships') {
-      return jobs.filter((job) => job.position.toLowerCase() === 'intern').slice(0, visibleJobs);
+      return jobs.filter((job) => job.employment_type.toLowerCase() === 'internship').slice(0, visibleJobs);
     } else {
-      return jobs.filter((job) => job.position.toLowerCase() !== 'intern').slice(0, visibleJobs);
+      return jobs.filter((job) => job.employment_type.toLowerCase() !== 'internship').slice(0, visibleJobs);
     }
   };
 

@@ -1,20 +1,11 @@
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useLocation } from "react-router-dom";
-import {
-  TextField,
-  Button,
-  Container,
-  Grid,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  FormControlLabel,
-  Checkbox,
-} from "@mui/material";
+import { TextField, Button, Container, Grid, MenuItem } from "@mui/material";
+// import { Select, MenuItem, FormControl, InputLabel } from "@mui/material";
 import Footer from "../Footer/Footer";
 import TextShpere from "../TechStack/TextShpere";
+import axios from "axios";
 
 const DynamicApplicationForm = () => {
   const {
@@ -24,10 +15,23 @@ const DynamicApplicationForm = () => {
   const location = useLocation();
   const { job } = location.state || {};
 
+  const [isSuccessModalVisible, setSuccessModalVisible] = useState(false);
+
   // State to manage form input values
   const [formData, setFormData] = useState({
-    name: "",
+    position_id: job.id,
+    fullName: "",
     email: "",
+    phoneNumber: "",
+    position: job.position,
+    skills: job.skills,
+    experience: job.experience,
+    workExperience: "",
+    LinkedIn: "",
+    GitHub: "",
+    resume: "",
+    coverLetter: "",
+
     // Add more fields as needed
   });
 
@@ -39,13 +43,51 @@ const DynamicApplicationForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Perform form submission logic here
-    console.log("Form submitted with data:", formData);
-    // You can redirect or perform other actions after form submission
-  };
 
+    try {
+      // Make a POST request to the API endpoint
+      const response = await axios.post(
+        "http://localhost:3001/insertData",
+        formData 
+      );
+
+      // Log the response from the server
+      console.log("Server Response:", response.data);
+
+      //Reset all the fields
+      setFormData({
+        position_id: job.id,
+        fullName: "",
+        email: "",
+        phoneNumber: "",
+        position: job.position,
+        skills: job.skills,
+        experience: job.experience,
+        workExperience: "",
+        LinkedIn: "",
+        GitHub: "",
+        resume: "",
+        coverLetter: "",
+        // cloudExperience: "",
+        // Add more fields as needed
+      });
+
+      // Show success modal
+      setSuccessModalVisible(true);
+
+      // Hide the success modal after 2 seconds
+      setTimeout(() => {
+        setSuccessModalVisible(false);
+      }, 2500);
+
+      // Optionally, you can redirect or perform other actions after successful submission
+    } catch (error) {
+      // Handle errors, log or display error messages as needed
+      console.error("Error submitting form:", error.message);
+    }
+  };
   if (!job) {
     // Handle the case when job details are not available
     return <div>Loading...</div>;
@@ -60,10 +102,40 @@ const DynamicApplicationForm = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
+      {isSuccessModalVisible && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.1)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 9999,
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: "white",
+              padding: "20px",
+              borderRadius: "10px",
+              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+            }}
+          >
+            <p style={{ fontWeight: "500", margin: "0 auto" }}>
+              Form successfully submitted!
+            </p>
+          </div>
+        </div>
+      )}
       <Container maxWidth="md" style={{ padding: "90px 40px 50px 40px" }}>
-      <h2 style={{ color: "#101c3d" }}>
-  Job Application Form: <span style={{ color: "Red" }}>{job.position}</span>
-</h2>
+        <h2 style={{ color: "#101c3d" }}>
+          Job Application Form:{" "}
+          <span style={{ color: "Red" }}>{job.position}</span>
+        </h2>
         <form onSubmit={handleSubmit}>
           <Grid container spacing={1}>
             <Grid item xs={12} md={6}>
@@ -76,6 +148,8 @@ const DynamicApplicationForm = () => {
                   <TextField
                     {...field}
                     label="Full Name"
+                    value={formData.fullName}
+                    onChange={(e) => handleInputChange(e)}
                     variant="outlined"
                     margin="normal"
                     fullWidth
@@ -101,6 +175,8 @@ const DynamicApplicationForm = () => {
                 render={({ field }) => (
                   <TextField
                     {...field}
+                    value={formData.email}
+                    onChange={(e) => handleInputChange(e)}
                     label="Email"
                     variant="outlined"
                     margin="normal"
@@ -127,6 +203,8 @@ const DynamicApplicationForm = () => {
                 render={({ field }) => (
                   <TextField
                     {...field}
+                    value={formData.phoneNumber} // Set value to formData.phoneNumber
+                    onChange={(e) => handleInputChange(e)} // Add onChange handler
                     label="Phone Number"
                     variant="outlined"
                     margin="normal"
@@ -139,69 +217,51 @@ const DynamicApplicationForm = () => {
               />
             </Grid>
             <Grid item xs={12} md={6}>
-                <Controller
-                  name="Position"
-                  control={control}
-                  defaultValue={job.position} // Set the defaultValue to job.position
-                  rules={{ required: "Applied Position is required" }}
-                  render={({ field }) => (
-                    <TextField
+              <Controller
+                name="position"
+                control={control}
+                defaultValue={job.position} // Set the defaultValue to job.position
+                rules={{ required: "Applied Position is required" }}
+                render={({ field }) => (
+                  <TextField
                     {...field}
                     label="Position"
                     variant="outlined"
                     margin="normal"
                     fullWidth
-                     InputProps={{
-          readOnly: true, // Make the TextField non-editable
-        }}
+                    InputProps={{
+                      readOnly: true, // Make the TextField non-editable
+                    }}
                   />
                 )}
-                />
+              />
             </Grid>
             <Grid item xs={12} md={6}>
-                <Controller
-                  name="skills"
-                  control={control}
-                  defaultValue={[job.skills]}
-                  rules={{ required: "Skills are required" }}
-                  render={({ field }) => (
-                    <TextField
+              <Controller
+                name="skills"
+                control={control}
+                defaultValue={job.skills} // Set value to job.skills or an empty string
+                rules={{ required: "Skills are required" }}
+                render={({ field }) => (
+                  <TextField
                     {...field}
                     label="Skills"
                     variant="outlined"
                     margin="normal"
                     fullWidth
+                    InputProps={{
+                      readOnly: true, // Make the TextField non-editable
+                    }}
                   />
                 )}
-                />
+              />
             </Grid>
-            {/* <Grid item xs={6}> */}
-            {/* <FormControlLabel
-                // control={
-                //   <Checkbox
-                //     {...control.getValues('azureExperience')}
-                //     checked={control.getValues('azureExperience') || false}
-                //   />
-                // }
-                label="Do you have hands-on experience with Azure Cloud?"
-              /> */}
-            {/* </Grid> */}
-            {/* <Grid item xs={6}> */}
-            {/* <FormControlLabel
-                control={
-                  <Checkbox
-                    // {...control.getValues('azureCertified')}
-                    // checked={control.getValues('azureCertified') || false}
-                  />
-                }
-                label="Are you Azure certified?"
-              /> */}
-            {/* </Grid>  */}
+
             <Grid item xs={12} md={6}>
               <Controller
                 name="experience"
                 control={control}
-                defaultValue={[job.experience]}
+                defaultValue={job.experience}
                 render={({ field }) => (
                   <TextField
                     {...field}
@@ -209,28 +269,51 @@ const DynamicApplicationForm = () => {
                     variant="outlined"
                     margin="normal"
                     fullWidth
+                    InputProps={{
+                      readOnly: true, // Make the TextField non-editable
+                    }}
                   />
                 )}
               />
             </Grid>
 
-            <Grid item  md={12} xs= {12}>
+            <Grid item md={12} xs={12}>
               <Controller
                 name="workExperience"
                 control={control}
                 defaultValue=""
-                rules={{ required: "Cover Letter is required" }}
+                rules={{ required: "Work Experience is required" }}
                 render={({ field }) => (
                   <TextField
                     {...field}
-                    label="Work Experiece"
+                    value={formData.workExperience} // Set value to formData.workExperience
+                    onChange={(e) => handleInputChange(e)} // Add onChange handler
+                    label="Work Experience"
                     variant="outlined"
                     margin="normal"
                     multiline
                     rows={4}
-                    // error={!!errors.coverLetter}
-                    // helperText={errors.coverLetter?.message}
-                    // required
+                    fullWidth
+                  />
+                )}
+              />
+            </Grid>
+
+            <Grid item md={6} xs={12}>
+              <Controller
+                name="GitHub"
+                control={control}
+                defaultValue=""
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    value={formData.GitHub} // Set value to formData.workExperience
+                    onChange={(e) => handleInputChange(e)} // Add onChange handler
+                    label="GitHub"
+                    variant="outlined"
+                    margin="normal"
+                    // multiline
+                    // rows={4}
                     fullWidth
                   />
                 )}
@@ -239,18 +322,18 @@ const DynamicApplicationForm = () => {
 
             <Grid item xs={12} md={6}>
               <Controller
-                name="Socials"
+                name="LinkedIn"
                 control={control}
                 defaultValue=""
                 render={({ field }) => (
                   <TextField
                     {...field}
-                    label="Socials"
+                    value={formData.LinkedIn} // Set value to formData.workExperience
+                    onChange={(e) => handleInputChange(e)} // Add onChange handler
+                    label="LinkedIn"
                     variant="outlined"
                     margin="normal"
-                    error={!!errors.resume}
-                    helperText={errors.resume?.message}
-                    required
+                    // required
                     fullWidth
                   />
                 )}
@@ -266,6 +349,8 @@ const DynamicApplicationForm = () => {
                 render={({ field }) => (
                   <TextField
                     {...field}
+                    value={formData.resume} // Set value to formData.workExperience
+                    onChange={(e) => handleInputChange(e)} // Add onChange handler
                     label="Resume Link"
                     variant="outlined"
                     margin="normal"
@@ -277,23 +362,23 @@ const DynamicApplicationForm = () => {
                 )}
               />
             </Grid>
-            <Grid item  md={12} xs= {12}>
+            <Grid item xs={12} md={6}>
               <Controller
                 name="coverLetter"
                 control={control}
                 defaultValue=""
-                rules={{ required: "Cover Letter is required" }}
+                // rules={{ required: "Resume Link is required" }}
                 render={({ field }) => (
                   <TextField
                     {...field}
+                    value={formData.coverLetter} // Set value to formData.workExperience
+                    onChange={(e) => handleInputChange(e)} // Add onChange handler
                     label="Cover Letter"
                     variant="outlined"
                     margin="normal"
-                    multiline
-                    rows={4}
-                    error={!!errors.coverLetter}
-                    helperText={errors.coverLetter?.message}
-                    required
+                    // error={!!errors.resume}
+                    // helperText={errors.resume?.message}
+                    // required
                     fullWidth
                   />
                 )}
