@@ -20,7 +20,9 @@ import {
   MenuItem,
   Typography,
   IconButton,
+  Box,
 } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import AttachFileIcon from "@material-ui/icons/AttachFile";
 import axios from "axios";
@@ -33,6 +35,7 @@ const DynamicApplicationForm = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedCoverLetter, setSelectedCoverLetter] = useState(null);
   const [hasCloudExperience, setHasCloudExperience] = useState(null);
+  const [isLoading, setLoading] = useState(false);
 
   const location = useLocation();
   const { job } = location.state;
@@ -40,6 +43,10 @@ const DynamicApplicationForm = () => {
   const onSubmit = async (data) => {
     console.log("Submit button clicked", data);
     try {
+
+      setLoading(true); // Set loading to true when the form is being submitted
+
+
       const formData = new FormData();
       formData.append("Id", job.id);
       formData.append("job_Id", job.job_id);
@@ -76,7 +83,10 @@ const DynamicApplicationForm = () => {
       setSuccessModalVisible(true);
     } catch (error) {
       console.error("Error submitting form:", error.message);
+    } finally {
+      setLoading(false); // Set loading to false after the form submission (success or failure)
     }
+    
   };
 
   const handleModalClose = () => {
@@ -201,32 +211,58 @@ const DynamicApplicationForm = () => {
                   )}
                 />
               </Grid>
-              <Paper elevation={0} style={{ margin: "10px auto", background:"transparent", alignItems:"center" }}>
-      <Grid container spacing={2} alignItems="center" justify="center">
-        <Grid item xs={12}>
-          <Typography variant="h6" style={{ fontWeight: "bold", textAlign: "center", color:"grey" }}>
-           Do you have any prior experience with any Cloud technologies like Azure, AWS?:
-          </Typography>
-        </Grid>
-        <Grid item xs={12}> 
-          <FormControl fullWidth>
-            <InputLabel htmlFor="cloud-experience-select">Select</InputLabel>
-            <Select
-              value={hasCloudExperience ? 'Yes' : 'No'}
-              onChange={(e) => setHasCloudExperience(e.target.value === 'Yes')}
-              label="Cloud Experience"
-              id="cloud-experience-select"
-              size="small"
-              variant="outlined"
-            >
-              <MenuItem value="Yes">Yes</MenuItem>
-              <MenuItem value="No">No</MenuItem>
-            </Select>
-          </FormControl>
-        </Grid>
-      </Grid>
-    </Paper>
-
+              <Paper
+                elevation={0}
+                style={{
+                  margin: "10px auto",
+                  background: "transparent",
+                  alignItems: "center",
+                  padding: "20px",
+                }}
+              >
+                <Grid
+                  container
+                  spacing={2}
+                  alignItems="center"
+                  justify="center"
+                >
+                  <Grid item xs={12} md={6}>
+                    <Box border={0.5} borderColor="lightgrey" borderRadius={4} p={2}>
+                      <Typography
+                        variant="p"
+                        style={{
+                          fontWeight: "500",
+                          textAlign: "center",
+                          color: "grey",
+                        }}
+                      >
+                        Do you have any prior experience with any Cloud
+                        technologies like Azure, AWS?
+                      </Typography>
+                    </Box>
+                  </Grid>
+                  <Grid item xs={12} md={6}>
+                    <FormControl fullWidth>
+                      <InputLabel htmlFor="cloud-experience-select">
+                        Select
+                      </InputLabel>
+                      <Select
+                        value={hasCloudExperience ? "Yes" : "No"}
+                        onChange={(e) =>
+                          setHasCloudExperience(e.target.value === "Yes")
+                        }
+                        label="Select"
+                        id="cloud-experience-select"
+                        size="small"
+                        variant="outlined"
+                      >
+                        <MenuItem value="Yes">Yes</MenuItem>
+                        <MenuItem value="No">No</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                </Grid>
+              </Paper>
 
               <Grid item xs={12} md={6}>
                 <Controller
@@ -264,7 +300,14 @@ const DynamicApplicationForm = () => {
                   control={control}
                   defaultValue=""
                   render={({ field }) => (
-                    <div style={{display:"flex", flexDirection:"column", border: "2px solid #4CAF50", borderRadius:"10px"}}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        border: "2px solid #4CAF50",
+                        borderRadius: "10px",
+                      }}
+                    >
                       <input
                         type="file"
                         accept=".pdf"
@@ -311,7 +354,14 @@ const DynamicApplicationForm = () => {
                   control={control}
                   defaultValue=""
                   render={({ field }) => (
-                    <div style={{display:"flex", flexDirection:"column", border: "2px solid #2196F3", borderRadius:"10px"}}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        border: "2px solid #2196F3",
+                        borderRadius: "10px",
+                      }}
+                    >
                       <input
                         type="file"
                         accept=".pdf"
@@ -342,10 +392,14 @@ const DynamicApplicationForm = () => {
               </Grid>
 
               <Grid item xs={12}>
-                <Button type="submit" variant="contained" color="primary">
-                  Submit Application
-                </Button>
-              </Grid>
+            {isLoading ? (
+              <CircularProgress color="primary" size={24} />
+            ) : (
+              <Button type="submit" variant="contained" color="primary">
+                Submit Application
+              </Button>
+            )}
+          </Grid>
             </Grid>
           </form>
         </Container>
@@ -360,16 +414,31 @@ const DynamicApplicationForm = () => {
       </footer>
 
       {isSuccessModalVisible && (
-        <Dialog open={isSuccessModalVisible} onClose={handleModalClose}>
-          <DialogTitle>Form successfully submitted!</DialogTitle>
-          <DialogContent>{/* Additional content */}</DialogContent>
-          <DialogActions>
-            <Button onClick={handleModalClose} color="primary">
-              Close
-            </Button>
-          </DialogActions>
-        </Dialog>
-      )}
+  <Dialog open={isSuccessModalVisible} onClose={handleModalClose}>
+    <DialogTitle style={{ backgroundColor: "#101c3d", color: "white" }}>
+      Form Successfully Submitted!
+    </DialogTitle>
+    <DialogContent style={{ padding: "20px", textAlign: "center" }}>
+      <img
+        src="https://img.freepik.com/free-vector/verified-concept-illustration_114360-5138.jpg?t=st=1709616728~exp=1709620328~hmac=16cf4617f307b1d51e1a7aa32ce04f0e9cbf0841a327a747cbcadc133ad99ace&w=826"
+        alt="Success"
+        style={{ width: "100%", maxWidth: "500px", marginBottom: "" }}
+      />
+      <p style={{ fontSize: "1.2rem", color: "#333" }}>
+        Thank you for submitting your application. Please make sure to note this Job-ID: <span style={{color: "Red", fontWeight:"600"}}>{job.job_id}</span> For Job Refference.  We'll get back to you soon!
+      </p>
+    </DialogContent>
+    <DialogActions style={{ justifyContent: "center", padding: "15px" }}>
+      <Button
+        onClick={handleModalClose}
+        variant="contained"
+        style={{ backgroundColor: "#101c3d", color: "white" }}
+      >
+        Close
+      </Button>
+    </DialogActions>
+  </Dialog>
+)}
     </div>
   );
 };
