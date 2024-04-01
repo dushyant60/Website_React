@@ -43,12 +43,11 @@ const DynamicApplicationForm = () => {
   const onSubmit = async (data) => {
     console.log("Submit button clicked", data);
     try {
-
       setLoading(true); // Set loading to true when the form is being submitted
-
-
+  
       const formData = new FormData();
       formData.append("Id", job.id);
+      formData.append("Company_ID", "ONEL1");
       formData.append("job_Id", job.job_id);
       formData.append("fullName", data.fullName);
       formData.append("email", data.email);
@@ -60,25 +59,23 @@ const DynamicApplicationForm = () => {
       formData.append("github", data.GitHub);
       formData.append("linkedin", data.LinkedIn);
       formData.append("hasCloudExperience", hasCloudExperience ? "Yes" : "No");
-
+  
       // Append the selected resume to FormData
       if (selectedFile) {
         formData.append("resume", selectedFile);
       }
-
-      // coverletter
-      if (selectedCoverLetter) {
-        formData.append("coverLetter", selectedCoverLetter);
-      }
-
+  
+      // Append the selected cover letter if available, otherwise append an empty string
+      formData.append("coverLetter", selectedCoverLetter ? selectedCoverLetter : "");
+  
       // Send the FormData to the server
       const response = await axios.post(
         "http://localhost:3001/insertData",
         formData
       );
-
+  
       console.log("Server Response:", response.data);
-
+  
       // Reset form fields
       setSuccessModalVisible(true);
     } catch (error) {
@@ -86,7 +83,6 @@ const DynamicApplicationForm = () => {
     } finally {
       setLoading(false); // Set loading to false after the form submission (success or failure)
     }
-    
   };
 
   const handleModalClose = () => {

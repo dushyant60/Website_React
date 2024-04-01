@@ -51,10 +51,10 @@
           accessConditions: { leaseAccessConditions: {} },
         });
   
-        const resumeUrl = resumeBlockBlobClient.url;
+        const resume = resumeBlockBlobClient.url;
   
         // Update the database with the resume URL
-        await collection.updateOne({ _id: result.insertedId }, { $set: { resumeUrl } });
+        await collection.updateOne({ _id: result.insertedId }, { $set: { resume } });
       }
   
       // Upload cover letter to Azure Blob Storage
@@ -68,10 +68,10 @@
           accessConditions: { leaseAccessConditions: {} },
         });
   
-        const coverLetterUrl = coverLetterBlockBlobClient.url;
+        const coverLetter = coverLetterBlockBlobClient.url;
   
         // Update the database with the cover letter URL
-        await collection.updateOne({ _id: result.insertedId }, { $set: { coverLetterUrl } });
+        await collection.updateOne({ _id: result.insertedId }, { $set: { coverLetter } });
       }
   
       res.status(201).json({ message: "Data inserted successfully", data: result.ops ? result.ops[0] : null });

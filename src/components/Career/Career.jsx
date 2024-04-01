@@ -29,6 +29,13 @@ const Career = () => {
     },
     {
       icon: "../images/tab_header_img.png",
+      name: "Ankit, Lead Data Scientist",
+      picture: "../images/Ankit-Profile-img.jpg",
+      reviews:
+        '"Onelogicas unique approach to the R & D driven work environment keeps me challenged every day and enables us to provide our customer withthe best of the delivery. "',
+    },
+    {
+      icon: "../images/tab_header_img.png",
       name: "Prachi, Lead BI Architect",
       picture: "../images/profile_img.jpg",
       reviews:
@@ -43,11 +50,21 @@ const Career = () => {
     },
     {
       icon: "../images/tab_header_img.png",
-      name: "Ankit, Lead Data Scientist",
-      picture: "../images/Ankit-Profile-img.jpg",
+      name: "Megha, Data Scientist",
+      picture: "../images/megha-photo.png",
       reviews:
-        '"Onelogicas unique approach to the R & D driven work environment keeps me challenged every day and enables us to provide our customer withthe best of the delivery. "',
+        '"Thrilled to be part of the Data Engineering & Analytics team at Onelogica. Collaborative atmosphere, impactful projects and access to cutting-edge tools make this a dynamic workplace. Excited about the prospects for growth and innovation! "',
     },
+    {
+      icon: "../images/tab_header_img.png",
+      name: "Saurav, Web App Developer",
+      picture: "../images/saurav-img.png",
+      reviews:
+        '"As a web application developer at Onelogica, I have had the privilege to contribute to innovative projects and collaborate with a talented team. My journey here has been one of continuous growth, both professionally and personally. The company commitment to fostering a supportive work culture has provided me with invaluable learning opportunities and has fueled my passion for technology. I am proud to be part of a company that prioritizes employee development and values creativity and teamwork. Looking forward to contributing to our continued success."',
+    },
+
+
+
     // Add more employee data as needed
   ];
 

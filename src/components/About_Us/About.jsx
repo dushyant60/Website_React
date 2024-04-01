@@ -7,6 +7,8 @@ import "./About.css";
 import { useMediaQuery } from "@mui/material";
 import { FaCheck } from 'react-icons/fa';
 import TextShpere from "../TechStack/TextShpere";
+import OnelogicaTimeLine from "./TimeLine";
+
 
 const About = () => {
   const isSmallScreen = useMediaQuery("(max-width: 1024px)");
@@ -126,32 +128,7 @@ const About = () => {
 
 {/* Our Jurney Section */}
 
-{/* <div className="startup-section">
-        <h2>Our Journey</h2>
-        <div className="info-container">
-          <div className="circle">
-            <span>01</span>
-          </div>
-          <div className="line"></div>
-          <div className="circle">
-            <span>02</span>
-          </div>
-          <div className="line"></div>
-          <div className="circle">
-            <span>03</span>
-          </div>
-          <div className="line"></div>
-          <div className="circle">
-            <span>04</span>
-          </div>
-        </div>
-        <div className="additional-text">
-          <p>Company Started: 16/01/2023</p>
-          <p>Team: 35+</p>
-          <p>Projects: 5+</p>
-          <p>Presence: Global</p>
-        </div>
-      </div>   */}
+<OnelogicaTimeLine/>
 
 
       {/* Team Section */}

@@ -16,6 +16,14 @@
     text-align: center;
     padding: 10% 0;
   }
+
+  .panoramicImage-job{
+    background: url(/public/images/jobBg_img.jpg) center/cover no-repeat;
+    color: #fff;
+    text-align: center;
+    padding: 7% 0;
+  }
+  
   
   .career-container{
     background-image: url(/public/images/BG_3.jpg);
@@ -91,6 +99,10 @@
 .panoramicImage{
   padding-top: 78px !important;
 }
+.panoramicImage-job{
+  padding: 23% 0;
+}
+
   }
 
 
@@ -181,4 +193,15 @@
     line-height: 12px;
 }
 
+
+/* JOB DETAILS: */
+
+.job-details-container{
+  background-image: url(/public/images/BG_3.jpg);
+    background-size: cover;
+    /* background-position: center; */
+}
+.job-details-subheading{
+  color:#061d5e;
+}
 
