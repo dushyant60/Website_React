@@ -70,7 +70,7 @@ const DynamicApplicationForm = () => {
   
       // Send the FormData to the server
       const response = await axios.post(
-        "http://localhost:3001/insertData",
+        "http://98.70.27.45:3001/insertData",
         formData
       );
   
