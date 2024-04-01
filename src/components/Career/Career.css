@@ -10,6 +10,20 @@
     text-align: center;
     padding: 10% 0;
   }
+  .panoramicImage-interns{
+    background: url(/public/images/InternBG_img.jpg) center/cover no-repeat;
+    color: #fff;
+    text-align: center;
+    padding: 10% 0;
+  }
+
+  .panoramicImage-job{
+    background: url(/public/images/jobBg_img.jpg) center/cover no-repeat;
+    color: #fff;
+    text-align: center;
+    padding: 7% 0;
+  }
+  
   
   .career-container{
     background-image: url(/public/images/BG_3.jpg);
@@ -85,4 +99,109 @@
 .panoramicImage{
   padding-top: 78px !important;
 }
+.panoramicImage-job{
+  padding: 23% 0;
+}
+
   }
+
+
+  .container-hiring{
+    background-image: url(/public/images/BG_2.jpg);
+    background-size: cover;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: 4% 3%;
+  }
+  .hiring {
+    flex: 1;
+    padding: 40px;
+    text-align: left;
+  }
+
+  .image-container-hiring {
+    flex: 1;
+  }
+
+  .image-container-hiring img {
+    width: 90%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .hiringImg{
+    border-top-left-radius: 300px;
+    border-top-right-radius: 300px;
+    border-bottom-right-radius: 300px;
+  }
+
+  .hiring h2 {
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 20px;
+    line-height: 1.7;
+    font-weight: 600;
+  }
+  .hiring h1 {
+    text-transform:uppercase;
+    font-size: 1.6rem;
+    color:  #00308F;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  .hiring h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color:  #00308F;
+    margin-top: 10px;
+  }
+  @media screen and (max-width: 768px) {
+    
+    .container-hiring {
+      flex-direction: column-reverse;
+      align-items: center;
+      height: auto;
+    }
+    .hiring {
+      flex: 1;
+      padding: 20px;
+      text-align: center;
+    }
+  }
+
+
+
+  /* JobLIst */
+
+  #testbutton {
+    width: 100px; /* Adjusted width */
+    height: 40px; /* Adjusted height */
+    border-radius: 50px; /* Adjusted border-radius */
+    position: relative;
+    left: calc(50% - 50px);
+    top: calc(50% - 20px);
+    background: linear-gradient(45deg, #3498db, #2980b9); /* Blue gradient */
+    cursor: pointer;
+    line-height: 12px;
+}
+
+
+/* JOB DETAILS: */
+
+.job-details-container{
+  background-image: url(/public/images/BG_3.jpg);
+    background-size: cover;
+    /* background-position: center; */
+}
+.job-details-subheading{
+  color:#061d5e;
+}
+

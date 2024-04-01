@@ -18,27 +18,27 @@ const Resources = () => {
     {
       title: "Training",
       description: "Explore our comprehensive training programs for skill development.",
-      image: "./images/icon/Trainings.png",
+      image: "../images/icon/Trainings.png",
     },
     {
       title: "Workshop",
       description: "Participate in our interactive workshops and enhance your knowledge.",
-      image: "./images/icon/Workshops.png",
+      image: "../images/icon/Workshops.png",
     },
     {
       title: "Blogs",
       description: "Read insightful blogs covering the latest trends and technologies.",
-      image: "./images/icon/Blog.png",
+      image: "../images/icon/Blog.png",
     },
     {
       title: "Case Studies",
       description: "Discover real-world examples through our detailed case studies.",
-      image: "./images/icon/CaseSTudy.png",
+      image: "../images/icon/CaseSTudy.png",
     },
     {
       title: "Newsletter",
       description: "Stay updated with our newsletter for curated content and announcements.",
-      image: "./images/icon/NewsLetter.png",
+      image: "../images/icon/NewsLetter.png",
     },
   ];
 

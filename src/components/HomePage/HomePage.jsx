@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,17 +8,20 @@ import "slick-carousel/slick/slick-theme.css";
 import Footer from "../Footer/Footer";
 import TextShpere from "../TechStack/TextShpere";
 import "./HomePage.css";
-import IntroModal from "./IntroModal";
+// import IntroModal from "./IntroModal";
 
 const HomePage = () => {
   
   const navigate = useNavigate();
-  const [isModalOpen, setIsModalOpen] = useState(true);
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-  const introVideoSrc = "./videos/Ram Mandir.mp4"; 
+   //[ Ram Mandir Video ]
+
+  // const [isModalOpen, setIsModalOpen] = useState(true);
+
+  // const closeModal = () => {
+  //   setIsModalOpen(false);
+  // };
+  // const introVideoSrc = "./videos/Ram Mandir.mp4"; 
 
   const products = [
     {
@@ -79,15 +83,14 @@ const HomePage = () => {
 
   const redirectToProductAndSolutions = () => {
     navigate("/productandsolutions");
-    window.location.reload(); // Reload the page
-    // window.scrollTo({ top: 0, behavior: "smooth" });
+    window.location.reload(); 
   };
   
   return (
-    <div class="homepage">
-      <IntroModal isOpen={isModalOpen} closeModal={closeModal} videoSrc={introVideoSrc} />
-      <div class="intro-section">
-        <div class="intro-video">
+    <div className="homepage">
+      {/* <IntroModal isOpen={isModalOpen} closeModal={closeModal} videoSrc={introVideoSrc} /> */}
+      <div className="intro-section">
+        <div className="intro-video">
           <video
             title="Intro Video"
             width="710"
@@ -96,38 +99,38 @@ const HomePage = () => {
             loop
             muted
             playsInline
-            src="./videos/Intro_Video.mp4"
+            src="../videos/Intro_Video.mp4"
             frameBorder="0"
             allowFullScreen
-            class="video-overlay"
+            className="video-overlay"
           ></video>
         </div>
-        <div class="intro-text">
+        <div className="intro-text">
           <h1>
-            <span class="highlight">We</span> provide smart application using
+            <span className="highlight">We</span> provide smart application using
             cloud and leading edge technologies
           </h1>
         </div>
       </div>
 
       {/* Fun Fact Area */}
-      <div class="fun-fact-container">
-        <div class="fun-fact-content">
+      <div className="fun-fact-container">
+        <div className="fun-fact-content">
           {/* <!-- Display your fun facts or statistics --> */}
-          <div class="fun-fact-item">
-            <div class="circle">100+</div>
+          <div className="fun-fact-item">
+            <div className="circle">100+</div>
             <p>Years of collective expertise</p>
           </div>
-          <div class="fun-fact-item">
-            <div class="circle">5+</div>
+          <div className="fun-fact-item">
+            <div className="circle">5+</div>
             <p>Products</p>
           </div>
-          <div class="fun-fact-item">
-            <div class="circle">20+</div>
+          <div className="fun-fact-item">
+            <div className="circle">20+</div>
             <p>Solutions</p>
           </div>
-          <div class="fun-fact-item">
-            <div class="circle">50+</div>
+          <div className="fun-fact-item">
+            <div className="circle">50+</div>
             <p>Strong minds, one unified vision</p>
           </div>
           {/* <!-- Add more fun facts or statistics --> */}
@@ -158,14 +161,14 @@ const HomePage = () => {
                 textDecoration: 'none', // Remove underline
                 fontSize: '16px',
               }}>
-          Products
-        </Link>
+            Products
+            </Link>
             </div>
           </div>
           <div className="image-container">
             <img
               className="aboutUsImg"
-              src="./images/AboutUsIMG.jpg"
+              src="../images/AboutUsIMG.jpg"
               alt="About-Us-Image"
             />
           </div>
@@ -173,7 +176,7 @@ const HomePage = () => {
         <div className="infoTabs-container">
           <div className="infoTabs">
             <div className="infoTab">
-              <img src="./images/RandS.png" alt="Research & Solution" />
+              <img src="../images/RandS.png" alt="Research & Solution" />
               <h3>Research & Solution</h3>
               <p>
                 Our research-driven framework delivers solutions based on
@@ -181,7 +184,7 @@ const HomePage = () => {
               </p>
             </div>
             <div className="infoTab">
-              <img src="./images/DandS.jpg" alt="Design & Strategy" />
+              <img src="../images/DandS.jpg" alt="Design & Strategy" />
               <h3>Design & Strategy</h3>
               <p>
                 Design thinking creates world-class products meeting future
@@ -190,7 +193,7 @@ const HomePage = () => {
               </p>
             </div>
             <div className="infoTab">
-              <img src="./images/Insights.jpg" alt="Insights" />
+              <img src="../images/Insights.jpg" alt="Insights" />
               <h3>Insights</h3>
               <p>
                 Data is the next oil, but only when crafted into insights. Our
@@ -200,8 +203,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-
-
+      
       <div className="products-section">
         <h2 className="section-title">
           <span className="highlight">Our</span> Products

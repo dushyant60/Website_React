@@ -8,7 +8,7 @@ const CustomNavbar = () => {
     <Navbar expand="lg" className="custom-navbar" variant="dark" fixed="top">
       <Container fluid>
         <Navbar.Brand href="/" className="ms-auto">
-          <Image src="./images/logo1.png" alt="Logo" className="logo-image" />
+          <Image src="../images/logo1.png" alt="Logo" className="logo-image" />
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
