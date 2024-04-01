@@ -11,10 +11,10 @@
   const port = process.env.PORT || 3001;
 
   const blobServiceClient = BlobServiceClient.fromConnectionString(
-    process.env.AZURE_BLOB_CONNECTION_STRING
+    process.env.REACT_APP_AZURE_BLOB_CONNECTION_STRING
   );
   const containerClient = blobServiceClient.getContainerClient(
-    process.env.AZURE_BLOB_CONTAINER_NAME
+    process.env.REACT_APP_AZURE_BLOB_CONTAINER_NAME
   );
 
   app.use(express.json());
@@ -32,7 +32,7 @@
   app.post("/insertData", upload.fields([{ name: 'resume', maxCount: 1 }, { name: 'coverLetter', maxCount: 1 }]), async (req, res) => {
     let connection;
     try {
-      connection = await MongoClient.connect(process.env.COSMOS_CONNECTION_STRING);
+      connection = await MongoClient.connect(process.env.REACT_APP_COSMOS_CONNECTION_STRING);
       console.log("Connected to Cosmos DB");
   
       const database = connection.db("websitedb");
@@ -91,7 +91,7 @@
   app.get('/getData', async (req, res) => {
     let connection;
     try {
-      connection = await MongoClient.connect(process.env.COSMOS_CONNECTION_STRING);
+      connection = await MongoClient.connect(process.env.REACT_APP_COSMOS_CONNECTION_STRING);
       console.log('Connected to Cosmos DB');
    
       const database = connection.db('websitedb');
