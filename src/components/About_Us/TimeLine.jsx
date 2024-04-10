@@ -21,7 +21,7 @@ const OnelogicaTimeLine = () => {
                             Company Started
                         </div>
                         <div className="timeline__event__description">
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, nam! Nam eveniet ut aliquam ab asperiores, accusamus iure veniam corporis incidunt reprehenderit accusantium id aut architecto harum quidem dolorem in!</p>
+                            <p>Our Story began in January 2023 with a vision to revolutionize the industry. Founded with passion and determination, our company embarked on a journey towards excellence. From humble beginnings, we set out to make a mark in the competitive landscape, driven by innovation and a commitment to delivering unparalleled solutions.</p>
                         </div>
                     </div>
                 </div>
@@ -38,7 +38,7 @@ const OnelogicaTimeLine = () => {
                             Our Team Growth
                         </div>
                         <div className="timeline__event__description">
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, nam! Nam eveniet ut aliquam ab asperiores, accusamus iure veniam corporis incidunt reprehenderit accusantium id aut architecto harum quidem dolorem in!</p>
+                            <p>Within a short span, our team burgeoned to over 50 dedicated members, each contributing their unique talents and expertise to our collective mission. United by a shared vision, we fostered a culture of collaboration and creativity, laying the foundation for our continued growth and success.</p>
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@ const OnelogicaTimeLine = () => {
                             Our Projects
                         </div>
                         <div className="timeline__event__description">
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, nam! Nam eveniet ut aliquam ab asperiores, accusamus iure veniam corporis incidunt reprehenderit accusantium id aut architecto harum quidem dolorem in!</p>
+                            <p>Our journey has been marked by the successful execution of over 5 transformative projects, each one a testament to our relentless pursuit of excellence. From concept to completion, we have demonstrated our ability to tackle challenges head-on, delivering results that exceed expectations and drive tangible impact.</p>
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@ const OnelogicaTimeLine = () => {
                             Our Presence
                         </div>
                         <div className="timeline__event__description">
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, nam! Nam eveniet ut aliquam ab asperiores, accusamus iure veniam corporis incidunt reprehenderit accusantium id aut architecto harum quidem dolorem in!</p>
+                            <p>Today, our presence spans the globe, reaching markets far and wide. With a foothold in diverse regions, we have established ourselves as a truly global entity, poised to shape the future of our industry on a worldwide scale.</p>
                         </div>
                     </div>
                 </div>

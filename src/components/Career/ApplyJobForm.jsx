@@ -19,6 +19,8 @@ import {
   IconButton,
   Box,
 } from "@mui/material";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 import CircularProgress from "@mui/material/CircularProgress";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import AttachFileIcon from "@material-ui/icons/AttachFile";
@@ -27,7 +29,11 @@ import Footer from "../Footer/Footer";
 import TextShpere from "../TechStack/TextShpere";
 
 const DynamicApplicationForm = () => {
-  const { control, handleSubmit } = useForm();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const [isSuccessModalVisible, setSuccessModalVisible] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedCoverLetter, setSelectedCoverLetter] = useState(null);
@@ -50,7 +56,7 @@ const DynamicApplicationForm = () => {
       formData.append("job_Id", job.job_id);
       formData.append("fullName", data.fullName);
       formData.append("email", data.email);
-      formData.append("phoneNumber", data.phoneNumber);
+      formData.append("phoneNumber", `+${data.phoneNumber}`);
       formData.append("position", job.position);
       formData.append("skills", job.skills);
       formData.append("experience", job.experience);
@@ -60,24 +66,30 @@ const DynamicApplicationForm = () => {
       formData.append("hasCloudExperience", hasCloudExperience ? "Yes" : "No");
       formData.append("college_name", data.college);
       formData.append("batch", data.batch);
-      if(job.employment_type === "Full Time"){
+      if (job.employment_type === "Full Time") {
         formData.append("current_CTC", data.currentctc);
         formData.append("notice_Period", data.noticeperiod);
         formData.append("area_of_expertise", data.areaOfExpertise);
       }
-      if(job.employment_type === "Internship"){
+      if (job.employment_type === "Internship") {
         formData.append("branch", data.branch);
         formData.append("graduation_Cgpa", data.graduationcgpa);
         formData.append("tenth_Marks", data.tenthMarks);
-        formData.append("twelth_Marks", data.twelthMarks);
+        formData.append("twelth_Marks", data.twelfthMarks);
       }
       if (selectedFile) {
         formData.append("resume", selectedFile);
       }
-      formData.append("coverLetter", selectedCoverLetter ? selectedCoverLetter : "");
+      formData.append(
+        "coverLetter",
+        selectedCoverLetter ? selectedCoverLetter : ""
+      );
 
       // Send the FormData to the server
-      const response = await axios.post("http://localhost:3001/insertData", formData);
+      const response = await axios.post(
+        "http://localhost:3001/insertData",
+        formData
+      );
 
       console.log("Server Response:", response.data);
 
@@ -129,7 +141,12 @@ const DynamicApplicationForm = () => {
                   control={control}
                   defaultValue=""
                   render={({ field }) => (
-                    <TextField label="Full Name" {...field} fullWidth required />
+                    <TextField
+                      label="Full Name"
+                      {...field}
+                      fullWidth
+                      required
+                    />
                   )}
                 />
               </Grid>
@@ -139,8 +156,23 @@ const DynamicApplicationForm = () => {
                   control={control}
                   defaultValue=""
                   render={({ field }) => (
-                    <TextField label="Email" {...field} fullWidth required />
+                    <TextField
+                      label="Email"
+                      {...field}
+                      fullWidth
+                      required
+                      error={!!errors?.email}
+                      helperText={
+                        errors?.email && "Please enter a valid email address"
+                      }
+                    />
                   )}
+                  rules={{
+                    pattern: {
+                      value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                      message: "Please enter a valid email address",
+                    },
+                  }}
                 />
               </Grid>
               <Grid item xs={12} md={6}>
@@ -149,9 +181,29 @@ const DynamicApplicationForm = () => {
                   control={control}
                   defaultValue=""
                   render={({ field }) => (
-                    <TextField label="Phone Number" {...field} fullWidth required />
+                    <PhoneInput
+          name="phoneNumber"
+          control={control}
+          inputClass="form-control"
+          country={"in"} // Default country
+          placeholder="Enter phone number"
+          enableSearch={true}
+          {...field}
+          required
+        />
                   )}
-                />
+                  rules={{
+      required: "Phone number is required", // Add required validation rule
+      pattern: {
+        value: /^[0-9]+$/,
+        message: "Please enter a valid phone number",
+      },
+    }}
+  />
+  {/* Display error message if there's an error */}
+  {errors.phoneNumber && (
+    <span style={{ color: "red" }}>{errors.phoneNumber.message}</span>
+  )}
               </Grid>
               <Grid item xs={12} md={6}>
                 <Controller
@@ -179,42 +231,51 @@ const DynamicApplicationForm = () => {
                   control={control}
                   defaultValue={job.experience}
                   render={({ field }) => (
-                    <TextField label="Experience" {...field} fullWidth disabled />
+                    <TextField
+                      label="Experience"
+                      {...field}
+                      fullWidth
+                      disabled
+                    />
                   )}
                 />
               </Grid>
               <Grid item xs={12} md={6}>
-                    <Controller
-                      name="college"
-                      control={control}
-                      defaultValue=""
-                      render={({ field }) => (
-                        <TextField label="College" {...field} fullWidth required />
-                      )}
-                    />
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                    <Controller
-                      name="batch"
-                      control={control}
-                      defaultValue=""
-                      render={({ field }) => (
-                        <TextField label="Batch" {...field} fullWidth required />
-                      )}
-                    />
-                  </Grid>
+                <Controller
+                  name="college"
+                  control={control}
+                  defaultValue=""
+                  render={({ field }) => (
+                    <TextField label="College" {...field} fullWidth required />
+                  )}
+                />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <Controller
+                  name="batch"
+                  control={control}
+                  defaultValue=""
+                  render={({ field }) => (
+                    <TextField label="Batch" {...field} fullWidth required />
+                  )}
+                />
+              </Grid>
 
-                  {/* For Full Time */}
-                  {job.employment_type === "Full Time" && (
+              {/* For Full Time */}
+              {job.employment_type === "Full Time" && (
                 <>
-               
                   <Grid item xs={12} md={6}>
                     <Controller
                       name="noticeperiod"
                       control={control}
                       defaultValue=""
                       render={({ field }) => (
-                        <TextField label="Notice Period (in Months)" {...field} fullWidth required />
+                        <TextField
+                          label="Notice Period (in Months)"
+                          {...field}
+                          fullWidth
+                          required
+                        />
                       )}
                     />
                   </Grid>
@@ -224,34 +285,48 @@ const DynamicApplicationForm = () => {
                       control={control}
                       defaultValue=""
                       render={({ field }) => (
-                        <TextField label="Currect CTC" {...field} fullWidth required />
+                        <TextField
+                          label="Currect CTC"
+                          {...field}
+                          fullWidth
+                          required
+                        />
                       )}
                     />
                   </Grid>
-                  <Grid item xs={12} >
+                  <Grid item xs={12}>
                     <Controller
                       name="areaOfExpertise"
                       control={control}
                       defaultValue=""
                       render={({ field }) => (
-                        <TextField label="Area of Expertise" {...field} fullWidth required />
+                        <TextField
+                          label="Area of Expertise"
+                          {...field}
+                          fullWidth
+                          required
+                        />
                       )}
                     />
                   </Grid>
                 </>
               )}
 
-               {/* Additional fields for Internship */}
-               {job.employment_type === "Internship" && (
+              {/* Additional fields for Internship */}
+              {job.employment_type === "Internship" && (
                 <>
-               
                   <Grid item xs={12} md={6}>
                     <Controller
                       name="branch"
                       control={control}
                       defaultValue=""
                       render={({ field }) => (
-                        <TextField label="Branch" {...field} fullWidth required />
+                        <TextField
+                          label="Branch"
+                          {...field}
+                          fullWidth
+                          required
+                        />
                       )}
                     />
                   </Grid>
@@ -261,8 +336,24 @@ const DynamicApplicationForm = () => {
                       control={control}
                       defaultValue=""
                       render={({ field }) => (
-                        <TextField label="CGPA / %" {...field} fullWidth required />
+                        <TextField
+                          label="CGPA / %"
+                          {...field}
+                          fullWidth
+                          required
+                          error={!!errors?.graduationcgpa}
+                          helperText={
+                            errors?.graduationcgpa &&
+                            "Please enter a valid CGPA or percentage"
+                          }
+                        />
                       )}
+                      rules={{
+                        pattern: {
+                          value: /^(?:\d{1,2}(?:\.\d{1,2})?|100(?:\.0{1,2})?)$/,
+                          message: "Please enter a valid CGPA or percentage",
+                        },
+                      }}
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -271,8 +362,24 @@ const DynamicApplicationForm = () => {
                       control={control}
                       defaultValue=""
                       render={({ field }) => (
-                        <TextField label="10th (% / CGPA)" {...field} fullWidth required />
+                        <TextField
+                          label="10th (% / CGPA)"
+                          {...field}
+                          fullWidth
+                          required
+                          error={!!errors?.tenthMarks}
+                          helperText={
+                            errors?.tenthMarks &&
+                            "Please enter a valid CGPA or percentage"
+                          }
+                        />
                       )}
+                      rules={{
+                        pattern: {
+                          value: /^(?:\d{1,2}(?:\.\d{1,2})?|100(?:\.0{1,2})?)$/,
+                          message: "Please enter a valid CGPA or percentage",
+                        },
+                      }}
                     />
                   </Grid>
                   <Grid item xs={12} md={6}>
@@ -281,8 +388,24 @@ const DynamicApplicationForm = () => {
                       control={control}
                       defaultValue=""
                       render={({ field }) => (
-                        <TextField label="12th or Diploma (% / CGPA) " {...field} fullWidth required />
+                        <TextField
+                          label="12th or Diploma (% / CGPA) "
+                          {...field}
+                          fullWidth
+                          required
+                          error={!!errors?.twelfthMarks}
+                          helperText={
+                            errors?.twelfthMarks &&
+                            "Please enter a valid CGPA or percentage"
+                          }
+                        />
                       )}
+                      rules={{
+                        pattern: {
+                          value: /^(?:\d{1,2}(?:\.\d{1,2})?|100(?:\.0{1,2})?)$/,
+                          message: "Please enter a valid CGPA or percentage",
+                        },
+                      }}
                     />
                   </Grid>
                   {/* <Grid item xs={12}>
@@ -315,7 +438,6 @@ const DynamicApplicationForm = () => {
                 />
               </Grid>
 
-             
               <Paper
                 elevation={0}
                 style={{
@@ -325,9 +447,19 @@ const DynamicApplicationForm = () => {
                   padding: "20px",
                 }}
               >
-                <Grid container spacing={2} alignItems="center" justify="center">
+                <Grid
+                  container
+                  spacing={2}
+                  alignItems="center"
+                  justify="center"
+                >
                   <Grid item xs={12} md={6}>
-                    <Box border={0.5} borderColor="lightgrey" borderRadius={2} p={2}>
+                    <Box
+                      border={0.5}
+                      borderColor="lightgrey"
+                      borderRadius={2}
+                      p={2}
+                    >
                       <Typography
                         variant="p"
                         style={{
@@ -336,16 +468,21 @@ const DynamicApplicationForm = () => {
                           color: "grey",
                         }}
                       >
-                        Do you have any prior experience with any Cloud technologies like Azure, AWS?
+                        Do you have any prior experience with any Cloud
+                        technologies like Azure, AWS?
                       </Typography>
                     </Box>
                   </Grid>
                   <Grid item xs={12} md={6}>
                     <FormControl fullWidth>
-                      <InputLabel htmlFor="cloud-experience-select">Select</InputLabel>
+                      <InputLabel htmlFor="cloud-experience-select">
+                        Select
+                      </InputLabel>
                       <Select
                         value={hasCloudExperience ? "Yes" : "No"}
-                        onChange={(e) => setHasCloudExperience(e.target.value === "Yes")}
+                        onChange={(e) =>
+                          setHasCloudExperience(e.target.value === "Yes")
+                        }
                         label="Select"
                         id="cloud-experience-select"
                         size="small"
@@ -397,7 +534,9 @@ const DynamicApplicationForm = () => {
                       style={{
                         display: "flex",
                         flexDirection: "column",
-                        border: selectedFile ? "2px solid #4CAF50" : "2px solid #ccc",
+                        border: selectedFile
+                          ? "2px solid #4CAF50"
+                          : "2px solid #ccc",
                         borderRadius: "10px",
                       }}
                     >
@@ -420,11 +559,16 @@ const DynamicApplicationForm = () => {
                             margin: "8px",
                           }}
                         >
-                          <CloudUploadIcon fontSize="inherit" style={{ color: selectedFile ? "#fff" : "#000" }} />
+                          <CloudUploadIcon
+                            fontSize="inherit"
+                            style={{ color: selectedFile ? "#fff" : "#000" }}
+                          />
                         </IconButton>
                       </label>
                       <Typography variant="caption" color="textSecondary">
-                        {selectedFile ? `Selected File: ${selectedFile.name}` : "Upload Resume (PDF only)"}
+                        {selectedFile
+                          ? `Selected File: ${selectedFile.name}`
+                          : "Upload Resume (PDF only)"}
                       </Typography>
                     </div>
                   )}
@@ -449,7 +593,9 @@ const DynamicApplicationForm = () => {
                       style={{
                         display: "flex",
                         flexDirection: "column",
-                        border: selectedCoverLetter ? "2px solid #2196F3" : "2px solid #ccc",
+                        border: selectedCoverLetter
+                          ? "2px solid #2196F3"
+                          : "2px solid #ccc",
                         borderRadius: "10px",
                       }}
                     >
@@ -466,16 +612,25 @@ const DynamicApplicationForm = () => {
                           component="span"
                           size="large"
                           style={{
-                            backgroundColor:  selectedCoverLetter ?  "#2196F3" : "#ccc",
-                            color:  selectedCoverLetter ? "white" : "#000",
+                            backgroundColor: selectedCoverLetter
+                              ? "#2196F3"
+                              : "#ccc",
+                            color: selectedCoverLetter ? "white" : "#000",
                             margin: "8px",
                           }}
                         >
-                          <AttachFileIcon fontSize="inherit" style={{ color: selectedCoverLetter ? "white" : "#000" }} />
+                          <AttachFileIcon
+                            fontSize="inherit"
+                            style={{
+                              color: selectedCoverLetter ? "white" : "#000",
+                            }}
+                          />
                         </IconButton>
                       </label>
                       <Typography variant="caption" color="textSecondary">
-                        {selectedCoverLetter ? `Selected File: ${selectedCoverLetter.name}` : "Upload Cover Letter (PDF only)"}
+                        {selectedCoverLetter
+                          ? `Selected File: ${selectedCoverLetter.name}`
+                          : "Upload Cover Letter (PDF only)"}
                       </Typography>
                     </div>
                   )}
@@ -516,7 +671,12 @@ const DynamicApplicationForm = () => {
               style={{ width: "100%", maxWidth: "500px", marginBottom: "" }}
             />
             <p style={{ fontSize: "1.2rem", color: "#333" }}>
-              Thank you for submitting your application. Please make sure to note this Job-ID: <span style={{color: "Red", fontWeight:"600"}}>{job.job_id}</span> For Job Refference.  We'll get back to you soon!
+              Thank you for submitting your application. Please make sure to
+              note this Job-ID:{" "}
+              <span style={{ color: "Red", fontWeight: "600" }}>
+                {job.job_id}
+              </span>{" "}
+              For Job Refference. We'll get back to you soon!
             </p>
           </DialogContent>
           <DialogActions style={{ justifyContent: "center", padding: "15px" }}>
