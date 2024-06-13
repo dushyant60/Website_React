@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Footer from "../Footer/Footer";
 import TextShpere from "../TechStack/TextShpere";
 import "./HomePage.css";
+import Partners from "./Partners";
 // import IntroModal from "./IntroModal";
 
 const HomePage = () => {
@@ -229,6 +230,9 @@ const HomePage = () => {
         </Slider>
       </div>
 
+      <div className="partnersbg">
+      <Partners/>
+      </div>
       <TextShpere />
 
       <footer ref={footerRef}>

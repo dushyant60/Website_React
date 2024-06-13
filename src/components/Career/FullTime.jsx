@@ -59,7 +59,7 @@ const FullTimePage = () => {
               textDecoration: "none",
               fontSize: "16px",
             }}
-            to="/linkedin-profile-link" // Add your LinkedIn profile link here
+            to="https://www.linkedin.com/company/onelogica/" // Add your LinkedIn profile link here
             target="_blank"
           >
             <img

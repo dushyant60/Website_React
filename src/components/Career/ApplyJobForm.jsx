@@ -27,6 +27,7 @@ import AttachFileIcon from "@material-ui/icons/AttachFile";
 import axios from "axios";
 import Footer from "../Footer/Footer";
 import TextShpere from "../TechStack/TextShpere";
+import { parsePhoneNumberFromString } from "libphonenumber-js";
 
 const DynamicApplicationForm = () => {
   const {
@@ -40,16 +41,50 @@ const DynamicApplicationForm = () => {
   const [hasCloudExperience, setHasCloudExperience] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const [jobType, setJobType] = useState("");
+  const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+  const numberRegex = /^[0-9]*$/;
+  // const years = Array.from({ length: 50 }, (_, index) => `${new Date().getFullYear() - index}`);
 
   const location = useLocation();
   const { job } = location.state;
+
+  const isPhoneNumberValid = (phoneNumber) => {
+    const phoneRegex = /^\+?\d{12,20}$/; // Allows for an optional '+' followed by 12-20 digits
+    return phoneRegex.test(phoneNumber);
+  };
+
+
+  const sendConfirmationEmail = async (email, fullName, position, job_Id) => {
+    try {
+      const response = await axios.post(
+        "https://onelogicawebsiteserver.azurewebsites.net/sendConfirmationEmail",
+        {
+          email,
+          fullName,
+          position,
+          job_Id,
+        }
+      );
+      console.log("Confirmation email sent successfully:", response.data);
+    } catch (error) {
+      console.error("Error sending confirmation email:", error.message);
+    }
+  };
 
   const onSubmit = async (data) => {
     console.log("Submit button clicked", data);
     try {
       setLoading(true);
+      const phoneNumber = data.phoneNumber;
+      if (!isPhoneNumberValid(phoneNumber)) {
+        alert("Please input a valid phone number.");
+        setLoading(false);
+        return;
+      }
       // Construct form data
+      const submissionDateTime = new Date().toISOString();
       const formData = new FormData();
+
       formData.append("Id", job.id);
       formData.append("Company_ID", "ONEL1");
       formData.append("employement_type", job.employment_type);
@@ -66,6 +101,7 @@ const DynamicApplicationForm = () => {
       formData.append("hasCloudExperience", hasCloudExperience ? "Yes" : "No");
       formData.append("college_name", data.college);
       formData.append("batch", data.batch);
+      formData.append("submissionDateTime", submissionDateTime);
       if (job.employment_type === "Full Time") {
         formData.append("current_CTC", data.currentctc);
         formData.append("notice_Period", data.noticeperiod);
@@ -90,10 +126,18 @@ const DynamicApplicationForm = () => {
         "http://localhost:3001/insertData",
         formData
       );
+      setSuccessModalVisible(true);
 
       console.log("Server Response:", response.data);
 
-      setSuccessModalVisible(true);
+      if (data.email && data.fullName && job.job_id && job.position) {
+        await sendConfirmationEmail(
+          data.email,
+          data.fullName,
+          job.job_id,
+          job.position
+        );
+      }
     } catch (error) {
       console.error("Error submitting form:", error.message);
     } finally {
@@ -103,7 +147,7 @@ const DynamicApplicationForm = () => {
 
   const handleModalClose = () => {
     setSuccessModalVisible(false);
-    window.location.reload();
+    // window.location.reload();
   };
 
   const handleFileChange = (e) => {
@@ -136,20 +180,32 @@ const DynamicApplicationForm = () => {
           <form onSubmit={handleSubmit(onSubmit)} style={{ marginTop: "4%" }}>
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
-                <Controller
-                  name="fullName"
-                  control={control}
-                  defaultValue=""
-                  render={({ field }) => (
-                    <TextField
-                      label="Full Name"
-                      {...field}
-                      fullWidth
-                      required
-                    />
-                  )}
-                />
+              <Controller
+    name="fullName"
+    control={control}
+    defaultValue=""
+    render={({ field }) => (
+      <TextField
+        label="Full Name"
+        {...field}
+        fullWidth
+        required
+        error={!!errors?.fullName}
+        helperText={
+          errors?.fullName ? "Full Name is required" : ""
+        }
+      />
+    )}
+    rules={{
+      required: "Full Name is required", // Updated required validation rule
+      pattern: {
+        value: /^[A-Za-z\s]+$/, // Regex to allow only letters and spaces
+        message: "Please enter letters only",
+      },
+    }}
+  />
               </Grid>
+
               <Grid item xs={12} md={6}>
                 <Controller
                   name="email"
@@ -162,12 +218,10 @@ const DynamicApplicationForm = () => {
                       fullWidth
                       required
                       error={!!errors?.email}
-                      helperText={
-                        errors?.email && "Please enter a valid email address"
-                      }
                     />
                   )}
                   rules={{
+                    required: "Email is required",
                     pattern: {
                       value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                       message: "Please enter a valid email address",
@@ -182,28 +236,17 @@ const DynamicApplicationForm = () => {
                   defaultValue=""
                   render={({ field }) => (
                     <PhoneInput
-          name="phoneNumber"
-          control={control}
-          inputClass="form-control"
-          country={"in"} // Default country
-          placeholder="Enter phone number"
-          enableSearch={true}
-          {...field}
-          required
-        />
+                      name="phoneNumber"
+                      control={control}
+                      inputClass="form-control"
+                      country={"in"} // Default country
+                      placeholder="Enter phone number"
+                      enableSearch={true}
+                      countryCodeEditable={false}
+                      {...field}
+                    />
                   )}
-                  rules={{
-      required: "Phone number is required", // Add required validation rule
-      pattern: {
-        value: /^[0-9]+$/,
-        message: "Please enter a valid phone number",
-      },
-    }}
-  />
-  {/* Display error message if there's an error */}
-  {errors.phoneNumber && (
-    <span style={{ color: "red" }}>{errors.phoneNumber.message}</span>
-  )}
+                 />
               </Grid>
               <Grid item xs={12} md={6}>
                 <Controller
@@ -256,7 +299,17 @@ const DynamicApplicationForm = () => {
                   control={control}
                   defaultValue=""
                   render={({ field }) => (
-                    <TextField label="Batch" {...field} fullWidth required />
+                    <TextField
+                      label="Batch"
+                      {...field}
+                      fullWidth
+                      error={!numberRegex.test(field.value)}
+                      helperText={
+                        !numberRegex.test(field.value)
+                          ? "Please enter only numbers"
+                          : ""
+                      }
+                    />
                   )}
                 />
               </Grid>
@@ -502,7 +555,17 @@ const DynamicApplicationForm = () => {
                   control={control}
                   defaultValue=""
                   render={({ field }) => (
-                    <TextField label="GitHub" {...field} fullWidth />
+                    <TextField
+                      label="GitHub"
+                      {...field}
+                      fullWidth
+                      error={field.value && !urlRegex.test(field.value)}
+                      helperText={
+                        field.value && !urlRegex.test(field.value)
+                          ? "Please enter a valid URL"
+                          : ""
+                      }
+                    />
                   )}
                 />
               </Grid>
@@ -512,7 +575,17 @@ const DynamicApplicationForm = () => {
                   control={control}
                   defaultValue=""
                   render={({ field }) => (
-                    <TextField label="LinkedIn" {...field} fullWidth />
+                    <TextField
+                      label="LinkedIn"
+                      {...field}
+                      fullWidth
+                      error={field.value && !urlRegex.test(field.value)}
+                      helperText={
+                        field.value && !urlRegex.test(field.value)
+                          ? "Please enter a valid URL"
+                          : ""
+                      }
+                    />
                   )}
                 />
               </Grid>
@@ -529,6 +602,9 @@ const DynamicApplicationForm = () => {
                   name="resume"
                   control={control}
                   defaultValue=""
+                  rules={{
+                    required: "Please Upload Your Latest Resume",
+                  }}
                   render={({ field }) => (
                     <div
                       style={{
@@ -545,8 +621,10 @@ const DynamicApplicationForm = () => {
                         accept=".pdf"
                         id="resume-upload"
                         style={{ display: "none" }}
-                        onChange={(e) => handleFileChange(e)}
-                        required
+                        onChange={(e) => {
+                          handleFileChange(e);
+                          field.onChange(e);
+                        }}
                       />
                       <label htmlFor="resume-upload">
                         <IconButton
@@ -570,6 +648,11 @@ const DynamicApplicationForm = () => {
                           ? `Selected File: ${selectedFile.name}`
                           : "Upload Resume (PDF only)"}
                       </Typography>
+                      {errors.resume && (
+                        <span style={{ color: "red" }}>
+                          {errors.resume.message}
+                        </span>
+                      )}
                     </div>
                   )}
                 />
@@ -668,7 +751,7 @@ const DynamicApplicationForm = () => {
             <img
               src="https://img.freepik.com/free-vector/verified-concept-illustration_114360-5138.jpg?t=st=1709616728~exp=1709620328~hmac=16cf4617f307b1d51e1a7aa32ce04f0e9cbf0841a327a747cbcadc133ad99ace&w=826"
               alt="Success"
-              style={{ width: "100%", maxWidth: "500px", marginBottom: "" }}
+              style={{ width: "100%", maxWidth: "400px", marginBottom: "" }}
             />
             <p style={{ fontSize: "1.2rem", color: "#333" }}>
               Thank you for submitting your application. Please make sure to

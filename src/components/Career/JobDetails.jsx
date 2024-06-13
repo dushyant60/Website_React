@@ -68,7 +68,7 @@ const JobDetails = () => {
               <strong>Salary Type:</strong> {job.salary_type}
             </p>
             <Box style={{ justifyContent: "center", display: "flex" }}>
-              <Button
+              {/* <Button
                 variant="contained"
                 color="primary"
                 startIcon={<FaDownload />}
@@ -78,7 +78,16 @@ const JobDetails = () => {
                 rel="noopener noreferrer"
               >
                 Job Description
-              </Button>
+              </Button> */}
+
+<Button
+              className="job-details-apply-button"
+              onClick={() => handleApplyClick(job)}
+              variant="contained"
+              color="primary"
+            >
+              Apply Now
+            </Button>
             </Box>
           </Box>
         </Grid>
@@ -110,7 +119,7 @@ const JobDetails = () => {
             </ul>
           </div>
 
-          <Grid
+          {/* <Grid
             item
             xs={12}
             sm={12}
@@ -120,15 +129,8 @@ const JobDetails = () => {
               padding: "2% 0",
             }}
           >
-            <Button
-              className="job-details-apply-button"
-              onClick={() => handleApplyClick(job)}
-              variant="contained"
-              color="primary"
-            >
-              Apply Now
-            </Button>
-          </Grid>
+       
+          </Grid> */}
         </Grid>
       </Grid>
       <Footer />

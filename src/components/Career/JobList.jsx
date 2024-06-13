@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import instance from "../../axios-config";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -22,20 +23,19 @@ const JobList = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "http://20.244.24.5:8000/api/jobforms/ONEL1/"
-        );
-        const data = await response.json();
-        setJobs(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
+    // Fetch jobs when the component mounts
+    fetchJobs();
   }, []);
+
+  const fetchJobs = async () => {
+    try {
+      const response = await instance.get('/joblist'); // Use Axios to make GET request
+      setJobs(response.data.data); 
+    } catch (error) {
+      console.error("Error fetching job data:", error);
+    }
+  };
+
 
   const handleShowMore = () => {
     setVisibleJobs((prevVisibleJobs) => prevVisibleJobs + 3);
